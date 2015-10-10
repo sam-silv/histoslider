@@ -15,7 +15,7 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      selection: [2, 4]
+      selection: [4, 2]
     }
   }
 
