@@ -12,6 +12,25 @@ class App extends Component {
     })
   }
 
+  constructor () {
+    super()
+    this.state = {
+      selection: [2, 4]
+    }
+  }
+
+  changeX (e) {
+    this.setState({
+      selection: [+e.target.value, this.state.selection[1]]
+    })
+  }
+
+  changeY (e) {
+    this.setState({
+      selection: [this.state.selection[0], +e.target.value]
+    })
+  }
+
   render () {
     return (
       <div>
@@ -19,9 +38,15 @@ class App extends Component {
           <p>
             <b>Selection</b>
           </p>
-          <p>{ this.state && this.state.selection ? this.state.selection : 'None' }</p>
+          <p>{ this.state && this.state.selection ? JSON.stringify(this.state.selection) : 'None' }</p>
+          <p>
+            <input type='text' defaultValue={this.state.selection[0]} onBlur={this.changeX.bind(this)} />
+            <input type='text' defaultValue={this.state.selection[1]} onBlur={this.changeY.bind(this)} />
+          </p>
         </div>
         <Histoslider
+          selection={this.state.selection}
+          padding={20}
           data={[1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 6, 7, 7, 7, 7, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 3, 2, 3, 3, 3, 3, 3]}
           onChange={this.histogramChanged.bind(this)}
         />
