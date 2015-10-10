@@ -19,7 +19,7 @@ class App extends Component {
           Selection: { this.state && this.state.selection ? this.state.selection : 'none' }
         </div>
         <Histoslider
-          data={[1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 6, 7, 7, 7, 7, 8, 8, 9, 9, 9, 9, 9]}
+          data={[1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 6, 7, 7, 7, 7, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 3, 2, 3, 3, 3, 3, 3]}
           onChange={this.histogramChanged.bind(this)}
         />
       </div>
