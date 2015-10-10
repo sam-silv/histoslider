@@ -39,10 +39,6 @@ class App extends Component {
             <b>Selection</b>
           </p>
           <p>{ this.state && this.state.selection ? JSON.stringify(this.state.selection) : 'None' }</p>
-          <p>
-            <input type='text' defaultValue={this.state.selection[0]} onBlur={this.changeX.bind(this)} />
-            <input type='text' defaultValue={this.state.selection[1]} onBlur={this.changeY.bind(this)} />
-          </p>
         </div>
         <Histoslider
           selection={this.state.selection}
