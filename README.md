@@ -8,7 +8,7 @@ A d3-based histogram sliding component, for React. Useful for exploring distribu
 
 Yay, glad we got that out of the way.
 
-# Component
+### Component
 ```
   <Histoslider
     // An array of data to show on the slider
@@ -26,7 +26,9 @@ Yay, glad we got that out of the way.
   />
 ```
 
-# Styling
+### Styling
+
+*to come*
 
 
 ## Development
