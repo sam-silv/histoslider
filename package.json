@@ -1,0 +1,24 @@
+{
+  "name": "histoslider",
+  "version": "0.0.1",
+  "description": "A slider component integrating a histogram, for react.",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "keywords": [
+    "react",
+    "d3",
+    "histogram",
+    "slider"
+  ],
+  "repository": "https://github.com/samhogg/histoslider",
+  "author": "Sam Hogg",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "standard": "^5.3.1"
+  }
+}
