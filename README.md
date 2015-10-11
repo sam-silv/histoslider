@@ -1,4 +1,4 @@
-# histoslider
+# histoslider [![Circle CI](https://circleci.com/gh/samhogg/histoslider.svg?style=svg)](https://circleci.com/gh/samhogg/histoslider)
 
 A d3-based histogram sliding component, for React. Useful for exploring distributions of things within data visualisations.
 
