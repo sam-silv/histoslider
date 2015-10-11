@@ -1,6 +1,6 @@
 # histoslider [![Circle CI](https://circleci.com/gh/samhogg/histoslider.svg?style=svg)](https://circleci.com/gh/samhogg/histoslider)
 
-A d3-based histogram sliding component, for React. Useful for exploring distributions of things within data visualisations.
+A D3 based histogram slider component for React. Useful for exploring distributions of things within data visualisations.
 
 ## Usage
 
@@ -25,8 +25,8 @@ Yay, glad we got that out of the way.
     selection={[number, number]}
     // A function to handle a change in the selection
     onChange={array => { console.log(array) }}
-    // Set true for constantly visible histogram, false to enable slide up behavior
-    histogramVisible={true}
+    // Set showOnDrag to enable slide up behavior
+    showOnDrag
   />
 ```
 
