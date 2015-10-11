@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "d3-arrays": "0.0.4",
+    "d3-format": "^0.3.2",
     "d3-scale": "^0.1.1"
   }
 }
