@@ -1,26 +1,43 @@
 html {
   font-family: sans-serif;
-}
-
-p {
-  margin: 0;
-}
-
-#main {
   padding: 1rem;
+	font-size: 12px;
 }
 
-input {
-  font-size: 16px;
-  padding: 4px;
-  margin: 6px 4px 0 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+body {
+	color: #232323;
+	font-family: 'Lora', sans-serif;
+  width: 840px;
+  margin: 0 auto;
+  font-size: 15px;
 }
 
-input:focus {
-  outline: none;
-  border-color: #0066aa;
+header {
+  border-bottom: 1px solid #efefef;
+	padding: 0.5rem 0 1rem 0;
+	margin-bottom: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat' sans-serif;
+  font-weight: normal;
+  color: #b00b1e;
+}
+
+a {
+  color: #b00b1e;
+}
+
+h1 {
+	font-size: 2.4rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-size: 1.8rem;
 }
 
 .demo-wrapper {
@@ -30,10 +47,16 @@ input:focus {
   display: -o-flex;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .Histoslider {
   width: 500px;
-  margin-bottom: 1rem;
-  margin-right: 1rem;
+  margin: 0.5rem;
+}
+
+footer {
+  text-align: center;
+  margin: 3rem 0 1rem 0;
+  color: #999;
 }
