@@ -22,3 +22,18 @@ input:focus {
   outline: none;
   border-color: #0066aa;
 }
+
+.demo-wrapper {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Histoslider {
+  width: 500px;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+}

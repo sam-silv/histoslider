@@ -43,14 +43,47 @@ class App extends Component {
           </p>
           <p>{ this.state.selection ? JSON.stringify(this.state.selection) : 'None' }</p>
         </div>
-        <Histoslider
-          selection={this.state.selection}
-          padding={20}
-          width={500}
-          height={200}
-          data={data}
-          onChange={this.histogramChanged.bind(this)}
-        />
+        <h1>Uncollapsed</h1>
+        <div className='demo-wrapper'>
+          <Histoslider
+            selection={this.state.selection}
+            padding={20}
+            width={500}
+            height={200}
+            data={data}
+            onChange={this.histogramChanged.bind(this)}
+          />
+          <Histoslider
+            selection={this.state.selection}
+            padding={20}
+            width={500}
+            height={200}
+            bucketSize={3}
+            selectionColor='purple'
+            data={data}
+            onChange={this.histogramChanged.bind(this)}
+          />
+          <Histoslider
+            selection={this.state.selection}
+            padding={20}
+            width={500}
+            height={200}
+            selectionColor='orange'
+            bucketSize={6}
+            data={data}
+            onChange={this.histogramChanged.bind(this)}
+          />
+          <Histoslider
+            selection={this.state.selection}
+            padding={15}
+            width={500}
+            height={200}
+            selectionColor='steelblue'
+            bucketSize={2.5}
+            data={data}
+            onChange={this.histogramChanged.bind(this)}
+          />
+        </div>
       </div>
     )
   }
