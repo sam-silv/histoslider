@@ -19,8 +19,12 @@ Yay, glad we got that out of the way.
     end={10}
     // The size of the histogram buckets, defaults 1
     bucketSize={1}
-    // A function to handle a change in the array
-    onChange={}
+    // How much to pad the slider and histogram by, defaults to 20
+    padding={20}
+    // The extent of the selection, this doesn't have to be sorted (and you shouldn't sort it to store it)
+    selection={[number, number]}
+    // A function to handle a change in the selection
+    onChange={array => { console.log(array) }}
     // Set true for constantly visible histogram, false to enable slide up behavior
     histogramVisible={true}
   />
