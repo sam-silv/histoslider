@@ -9,7 +9,7 @@ A d3-based histogram sliding component, for React. Useful for exploring distribu
 Yay, glad we got that out of the way.
 
 ### Component
-```
+```JSX
   <Histoslider
     // An array of data to show on the slider
     data={[0, 1, 2, 2, 3, 4, 4, 5, 5, 5, 6, 6, 7]}
