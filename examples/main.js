@@ -52,7 +52,7 @@ class App extends Component {
             padding={20}
             width={400}
             height={200}
-            bucketSize={3}
+            bucketSize={6}
             selectionColor='purple'
             data={data}
             onChange={this.histogramChanged.bind(this)}
@@ -63,7 +63,8 @@ class App extends Component {
             width={400}
             height={200}
             selectionColor='orange'
-            bucketSize={6}
+            histogramPadding={10}
+            bucketSize={4}
             data={data}
             onChange={this.histogramChanged.bind(this)}
           />
@@ -72,8 +73,9 @@ class App extends Component {
             padding={15}
             width={400}
             height={200}
+            histogramPadding={0}
             selectionColor='steelblue'
-            bucketSize={2.5}
+            bucketSize={2}
             data={data}
             onChange={this.histogramChanged.bind(this)}
           />
