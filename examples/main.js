@@ -38,6 +38,35 @@ class App extends Component {
         <div style={{ margin: '0 0 1rem 0' }}>
           <p><b>Selection</b> { this.state.selection ? <code>{JSON.stringify(this.state.selection)}</code> : 'None' }</p>
         </div>
+        <h3>Show on Drag</h3>
+        <div className='demo-wrapper'>
+          <Histoslider
+            selection={this.state.selection}
+            padding={25}
+            width={400}
+            height={200}
+            showOnDrag
+            histogramPadding={4}
+            selectionColor='lightgreen'
+            bucketSize={2}
+            data={data}
+            onChange={this.histogramChanged.bind(this)}
+          />
+          <Histoslider
+            selection={this.state.selection}
+            padding={25}
+            width={400}
+            height={200}
+            showOnDrag
+            histogramPadding={10}
+            selectionColor='#e74c3c'
+            bucketSize={2}
+            barBorderRadius={3}
+            data={data}
+            onChange={this.histogramChanged.bind(this)}
+          />
+        </div>
+        <h3>Visible</h3>
         <div className='demo-wrapper'>
           <Histoslider
             selection={this.state.selection}
@@ -73,7 +102,7 @@ class App extends Component {
             padding={15}
             width={400}
             height={200}
-            histogramPadding={0}
+            histogramPadding={0.5}
             selectionColor='steelblue'
             bucketSize={2}
             data={data}
