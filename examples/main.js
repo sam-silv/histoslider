@@ -52,7 +52,7 @@ class App extends Component {
             padding={20}
             width={400}
             height={200}
-            bucketSize={6}
+            bucketSize={2}
             selectionColor='purple'
             data={data}
             onChange={this.histogramChanged.bind(this)}
