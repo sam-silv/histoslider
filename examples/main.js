@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <div>
         <div style={{ margin: '0 0 1rem 0' }}>
-          <p><b>Selection</b> { this.state.selection ? <code>{JSON.stringify(this.state.selection)}</code> : 'None' }</p>
+          <p><b>Current Selection</b> { this.state.selection ? <code>{JSON.stringify(this.state.selection)}</code> : 'None' }</p>
         </div>
         <h3>Show on Drag</h3>
         <div className='demo-wrapper'>

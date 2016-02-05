@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "standard",
-    "start": "webpack-dev-server --content-base examples/ --inline -hot"
+    "start": "webpack-dev-server --content-base examples/ --inline --hot"
   },
   "keywords": [
     "react",
@@ -17,18 +17,18 @@
   "author": "Sam Hogg",
   "license": "MIT",
   "devDependencies": {
-    "babel": "^5.8.23",
-    "babel-core": "^5.8.25",
-    "babel-loader": "^5.3.2",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
-    "standard": "^5.3.1",
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.12.0"
+    "babel": "^5.8.35",
+    "babel-core": "^5.8.35",
+    "babel-loader": "^5.4.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "standard": "^5.4.1",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "d3-arrays": "0.0.4",
-    "d3-format": "^0.3.2",
-    "d3-scale": "^0.1.1"
+    "d3-array": "^0.7.1",
+    "d3-format": "^0.3.6",
+    "d3-scale": "^0.1.5"
   }
 }
