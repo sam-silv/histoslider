@@ -30,10 +30,7 @@ Yay, glad we got that out of the way.
   />
 ```
 
-### Styling
-
-*to come*
-
+A few things in the works, including just passing buckets to Histoslider, and tests.
 
 ## Development
 
