@@ -17,7 +17,7 @@
   "author": "Sam Hogg",
   "license": "MIT",
   "devDependencies": {
-    "babel": "^5.8.35",
+    "babel": "^6.5.2",
     "babel-core": "^5.8.35",
     "babel-loader": "^5.4.0",
     "react": "^0.14.7",
