@@ -29,6 +29,6 @@
   "dependencies": {
     "d3-array": "^0.7.1",
     "d3-format": "^0.3.6",
-    "d3-scale": "^0.7.2"
+    "d3-scale": "^0.8.0"
   }
 }
