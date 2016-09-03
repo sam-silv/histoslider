@@ -50,6 +50,8 @@ export default class Histogram extends Component {
 
     let style = this.props.showOnDrag ? { position: 'absolute', left: '-1px', right: '-1px', backgroundColor: '#fafafa', border: '1px solid #eaeaea', borderBottom: 'none', bottom: 'calc(100% - ' + this.props.padding + 'px)' } : {}
 
+    console.log(buckets)
+
     return (
       <div>
         <svg style={Object.assign({}, style, histogramStyle)} width={this.props.width} height={this.props.height}>

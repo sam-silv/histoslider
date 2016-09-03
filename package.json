@@ -4,7 +4,7 @@
   "description": "A slider component integrating a histogram, for React.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "standard",
+    "test": "standard src/",
     "start": "webpack-dev-server --content-base docs/ --inline --hot",
     "build-docs": "webpack",
     "build": "babel ./src --out-dir ./lib --source-maps --plugins babel-plugin-add-module-exports",
