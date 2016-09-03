@@ -56,9 +56,9 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _lib = __webpack_require__(172);
+	var _src = __webpack_require__(172);
 
-	var _lib2 = _interopRequireDefault(_lib);
+	var _src2 = _interopRequireDefault(_src);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -141,7 +141,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-wrapper' },
-	          _react2.default.createElement(_lib2.default, {
+	          _react2.default.createElement(_src2.default, {
 	            selection: this.state.selection,
 	            padding: 25,
 	            width: 400,
@@ -153,7 +153,7 @@
 	            data: data,
 	            onChange: this.histogramChanged.bind(this)
 	          }),
-	          _react2.default.createElement(_lib2.default, {
+	          _react2.default.createElement(_src2.default, {
 	            selection: this.state.selection,
 	            padding: 25,
 	            width: 400,
@@ -175,7 +175,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-wrapper' },
-	          _react2.default.createElement(_lib2.default, {
+	          _react2.default.createElement(_src2.default, {
 	            selection: this.state.selection,
 	            padding: 20,
 	            width: 400,
@@ -183,7 +183,7 @@
 	            data: data,
 	            onChange: this.histogramChanged.bind(this)
 	          }),
-	          _react2.default.createElement(_lib2.default, {
+	          _react2.default.createElement(_src2.default, {
 	            selection: this.state.selection,
 	            padding: 20,
 	            width: 400,
@@ -193,7 +193,7 @@
 	            data: data,
 	            onChange: this.histogramChanged.bind(this)
 	          }),
-	          _react2.default.createElement(_lib2.default, {
+	          _react2.default.createElement(_src2.default, {
 	            selection: this.state.selection,
 	            padding: 20,
 	            width: 400,
@@ -204,7 +204,7 @@
 	            data: data,
 	            onChange: this.histogramChanged.bind(this)
 	          }),
-	          _react2.default.createElement(_lib2.default, {
+	          _react2.default.createElement(_src2.default, {
 	            selection: this.state.selection,
 	            padding: 15,
 	            width: 400,
