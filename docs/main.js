@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import Histoslider from '../lib/components/Histoslider'
+import Histoslider from '../lib/'
 
 const main = document.getElementById('main')
 

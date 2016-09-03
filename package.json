@@ -2,11 +2,12 @@
   "name": "histoslider",
   "version": "0.0.1",
   "description": "A slider component integrating a histogram, for React.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "standard",
     "start": "webpack-dev-server --content-base docs/ --inline --hot",
-    "build": "webpack"
+    "build-docs": "webpack",
+    "prepublish": "npm run build-docs"
   },
   "keywords": [
     "react",
