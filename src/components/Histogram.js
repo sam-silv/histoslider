@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { ascending } from 'd3-array'
 
 const histogramStyle = {
   display: 'block'
@@ -11,7 +12,7 @@ export default class Histogram extends Component {
   }
 
   bucket (data, start, end, bucketSize) {
-    const sorted = data.sort()
+    const sorted = data.sort(ascending)
     let buckets = []
     let s = start
     let i = 0
@@ -44,13 +45,13 @@ export default class Histogram extends Component {
 
   render () {
     const innerHeight = this.props.height - this.props.padding
+    console.log(this.props)
     const { buckets, max } = this.bucket(this.props.data, this.props.start, this.props.end, this.props.bucketSize)
     const bucketWidth = this.props.innerWidth / buckets.length
     const selection = this.props.selection
 
     let style = this.props.showOnDrag ? { position: 'absolute', left: '-1px', right: '-1px', backgroundColor: '#fafafa', border: '1px solid #eaeaea', borderBottom: 'none', bottom: 'calc(100% - ' + this.props.padding + 'px)' } : {}
 
-    console.log(buckets)
 
     return (
       <div>
