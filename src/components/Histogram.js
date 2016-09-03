@@ -45,7 +45,6 @@ export default class Histogram extends Component {
 
   render () {
     const innerHeight = this.props.height - this.props.padding
-    console.log(this.props)
     const { buckets, max } = this.bucket(this.props.data, this.props.start, this.props.end, this.props.bucketSize)
     const bucketWidth = this.props.innerWidth / buckets.length
     const selection = this.props.selection
