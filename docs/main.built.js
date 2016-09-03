@@ -56,9 +56,9 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Histoslider = __webpack_require__(172);
+	var _lib = __webpack_require__(172);
 
-	var _Histoslider2 = _interopRequireDefault(_Histoslider);
+	var _lib2 = _interopRequireDefault(_lib);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -141,7 +141,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-wrapper' },
-	          _react2.default.createElement(_Histoslider2.default, {
+	          _react2.default.createElement(_lib2.default, {
 	            selection: this.state.selection,
 	            padding: 25,
 	            width: 400,
@@ -153,7 +153,7 @@
 	            data: data,
 	            onChange: this.histogramChanged.bind(this)
 	          }),
-	          _react2.default.createElement(_Histoslider2.default, {
+	          _react2.default.createElement(_lib2.default, {
 	            selection: this.state.selection,
 	            padding: 25,
 	            width: 400,
@@ -175,7 +175,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-wrapper' },
-	          _react2.default.createElement(_Histoslider2.default, {
+	          _react2.default.createElement(_lib2.default, {
 	            selection: this.state.selection,
 	            padding: 20,
 	            width: 400,
@@ -183,7 +183,7 @@
 	            data: data,
 	            onChange: this.histogramChanged.bind(this)
 	          }),
-	          _react2.default.createElement(_Histoslider2.default, {
+	          _react2.default.createElement(_lib2.default, {
 	            selection: this.state.selection,
 	            padding: 20,
 	            width: 400,
@@ -193,7 +193,7 @@
 	            data: data,
 	            onChange: this.histogramChanged.bind(this)
 	          }),
-	          _react2.default.createElement(_Histoslider2.default, {
+	          _react2.default.createElement(_lib2.default, {
 	            selection: this.state.selection,
 	            padding: 20,
 	            width: 400,
@@ -204,7 +204,7 @@
 	            data: data,
 	            onChange: this.histogramChanged.bind(this)
 	          }),
-	          _react2.default.createElement(_Histoslider2.default, {
+	          _react2.default.createElement(_lib2.default, {
 	            selection: this.state.selection,
 	            padding: 15,
 	            width: 400,
@@ -21606,21 +21606,39 @@
 	  value: true
 	});
 
+	var _Histoslider = __webpack_require__(173);
+
+	var _Histoslider2 = _interopRequireDefault(_Histoslider);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _Histoslider2.default;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _d3Array = __webpack_require__(173);
+	var _d3Array = __webpack_require__(174);
 
-	var _d3Scale = __webpack_require__(174);
+	var _d3Scale = __webpack_require__(175);
 
-	var _Histogram = __webpack_require__(182);
+	var _Histogram = __webpack_require__(183);
 
 	var _Histogram2 = _interopRequireDefault(_Histogram);
 
-	var _Slider = __webpack_require__(183);
+	var _Slider = __webpack_require__(184);
 
 	var _Slider2 = _interopRequireDefault(_Slider);
 
@@ -21732,7 +21750,7 @@
 	};
 
 /***/ },
-/* 173 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-array/ Version 0.8.1. Copyright 2016 Mike Bostock.
@@ -22201,12 +22219,12 @@
 	}));
 
 /***/ },
-/* 174 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-scale/ Version 1.0.3. Copyright 2016 Mike Bostock.
 	(function (global, factory) {
-	   true ? factory(exports, __webpack_require__(175), __webpack_require__(176), __webpack_require__(177), __webpack_require__(179), __webpack_require__(180), __webpack_require__(181), __webpack_require__(178)) :
+	   true ? factory(exports, __webpack_require__(176), __webpack_require__(177), __webpack_require__(178), __webpack_require__(180), __webpack_require__(181), __webpack_require__(182), __webpack_require__(179)) :
 	  typeof define === 'function' && define.amd ? define(['exports', 'd3-array', 'd3-collection', 'd3-interpolate', 'd3-format', 'd3-time', 'd3-time-format', 'd3-color'], factory) :
 	  (factory((global.d3 = global.d3 || {}),global.d3,global.d3,global.d3,global.d3,global.d3,global.d3,global.d3));
 	}(this, function (exports,d3Array,d3Collection,d3Interpolate,d3Format,d3Time,d3TimeFormat,d3Color) { 'use strict';
@@ -23108,7 +23126,7 @@
 	}));
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-array/ Version 1.0.1. Copyright 2016 Mike Bostock.
@@ -23577,7 +23595,7 @@
 	}));
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-collection/ Version 1.0.1. Copyright 2016 Mike Bostock.
@@ -23799,12 +23817,12 @@
 	}));
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-interpolate/ Version 1.1.1. Copyright 2016 Mike Bostock.
 	(function (global, factory) {
-	   true ? factory(exports, __webpack_require__(178)) :
+	   true ? factory(exports, __webpack_require__(179)) :
 	  typeof define === 'function' && define.amd ? define(['exports', 'd3-color'], factory) :
 	  (factory((global.d3 = global.d3 || {}),global.d3));
 	}(this, function (exports,d3Color) { 'use strict';
@@ -24346,7 +24364,7 @@
 	}));
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-color/ Version 1.0.1. Copyright 2016 Mike Bostock.
@@ -24868,7 +24886,7 @@
 	}));
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-format/ Version 1.0.2. Copyright 2016 Mike Bostock.
@@ -25202,7 +25220,7 @@
 	}));
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-time/ Version 1.0.2. Copyright 2016 Mike Bostock.
@@ -25584,12 +25602,12 @@
 	}));
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-time-format/ Version 2.0.2. Copyright 2016 Mike Bostock.
 	(function (global, factory) {
-	   true ? factory(exports, __webpack_require__(180)) :
+	   true ? factory(exports, __webpack_require__(181)) :
 	  typeof define === 'function' && define.amd ? define(['exports', 'd3-time'], factory) :
 	  (factory((global.d3 = global.d3 || {}),global.d3));
 	}(this, function (exports,d3Time) { 'use strict';
@@ -26171,7 +26189,7 @@
 	}));
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26354,7 +26372,7 @@
 	};
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26369,7 +26387,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _d3Format = __webpack_require__(179);
+	var _d3Format = __webpack_require__(180);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

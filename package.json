@@ -7,7 +7,7 @@
     "test": "standard",
     "start": "webpack-dev-server --content-base docs/ --inline --hot",
     "build-docs": "webpack",
-    "prepublish": "npm run build-docs"
+    "prepublish": "npm run build-docs && git add docs/ && git commit -m \"Updated documentation\""
   },
   "keywords": [
     "react",
