@@ -60,6 +60,15 @@ h3 {
   margin: 0.5rem;
 }
 
+.Histoslider text {
+  cursor: default;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
 footer {
   text-align: center;
   margin: 3rem 0 1rem 0;
