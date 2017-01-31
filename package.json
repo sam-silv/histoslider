@@ -34,7 +34,7 @@
     "react-dom": "^15.3.1",
     "standard": "^8.0.0",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.1"
+    "webpack-dev-server": "^2.2.1"
   },
   "dependencies": {
     "d3-array": "^0.8.0",
