@@ -33,11 +33,11 @@
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "standard": "^8.0.0",
-    "webpack": "2",
+    "webpack": "^2.2.1",
     "webpack-dev-server": "^2.2.1"
   },
   "dependencies": {
-    "d3-array": "^0.8.0",
+    "d3-array": "^1.0.2",
     "d3-format": "^1.0.2",
     "d3-scale": "^1.0.0"
   }
