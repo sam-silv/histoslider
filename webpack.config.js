@@ -11,11 +11,11 @@ module.exports = {
     publicPath: ''
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel'
+        loader: 'babel-loader'
       }
     ]
   }
