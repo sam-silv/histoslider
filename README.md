@@ -1,5 +1,7 @@
 # histoslider [![Circle CI](https://circleci.com/gh/samhogg/histoslider.svg?style=svg)](https://circleci.com/gh/samhogg/histoslider)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/samhogg/histoslider.svg)](https://greenkeeper.io/)
+
 A D3 based histogram slider component for React. Useful for exploring distributions of things within data visualisations.
 
 ## Usage
