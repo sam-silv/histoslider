@@ -1,6 +1,6 @@
 {
   "name": "histoslider",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
     "react-scripts": "0.8.5"
