@@ -2,8 +2,8 @@
   "name": "histoslider",
   "version": "1.0.0",
   "devDependencies": {
-    "@kadira/storybook": "^2.21.0",
-    "react-scripts": "0.8.5"
+    "@kadira/storybook": "^2.35.3",
+    "react-scripts": "^0.8.5"
   },
   "peerDependencies": {
     "d3-array": "^1.0.2",
