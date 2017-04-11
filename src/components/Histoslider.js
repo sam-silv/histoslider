@@ -84,7 +84,8 @@ Histoslider.propTypes = {
   histogramPadding: PropTypes.number,
   showOnDrag: PropTypes.bool,
   style: PropTypes.object,
-  barBorderRadius: PropTypes.number
+  barBorderRadius: PropTypes.number,
+  handleLabelFormat : PropTypes.string
 }
 
 Histoslider.defaultProps = {
@@ -98,5 +99,6 @@ Histoslider.defaultProps = {
   barBorderRadius: 0,
   style: {
     border: '1px solid red'
-  }
+  },
+  handleLabelFormat : '0.3P'
 }
