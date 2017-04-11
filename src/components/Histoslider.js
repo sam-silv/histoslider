@@ -100,5 +100,5 @@ Histoslider.defaultProps = {
   style: {
     border: '1px solid red'
   },
-  handleLabelFormat : '0.3p'
+  handleLabelFormat : '0.3P'
 }
