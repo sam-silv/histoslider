@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
-    "react-scripts": "^0.9.3"
+    "react-scripts": "^1.0.0"
   },
   "peerDependencies": {
     "d3-array": "^1.0.2",
