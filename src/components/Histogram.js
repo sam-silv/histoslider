@@ -1,134 +1,136 @@
-import React, { Component, PropTypes } from 'react'
-import { ascending } from 'd3-array'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-const histogramStyle = {
-  display: 'block'
-}
-
-export default class Histogram extends Component {
-
-  selectBucket (bucket) {
-    this.props.onChange([bucket.start, bucket.end])
+class Histogram extends Component {
+  selectBucket(bucket) {
+    this.props.onChange([bucket.x0, bucket.x]);
   }
 
-  bucket (data, start, end, bucketSize) {
-    const sorted = data.sort(ascending)
-    let buckets = []
-    let s = start
-    let i = 0
-    let max = 0
-
-    while (s < (end)) {
-      let values = []
-
-      while (sorted[i] < (s + bucketSize)) {
-        if (sorted[i] < start) continue
-        values.push(data[i])
-        i++
-      }
-
-      buckets.push({
-        start: s,
-        end: s + bucketSize,
-        values
-      })
-      max = values.length > max ? values.length : max
-
-      s += bucketSize
-    }
-
-    return {
-      buckets,
+  render() {
+    const {
+      height,
+      data,
+      style,
+      showOnDrag,
+      selection,
+      histogramPadding,
+      reset,
+      selectionColor,
+      selectBucket,
+      scale,
+      barBorderRadius,
+      barStyle,
+      barPadding,
+      width,
       max
-    }
-  }
-
-  render () {
-    const innerHeight = this.props.height - this.props.padding
-    const { buckets, max } = this.bucket(this.props.data, this.props.start, this.props.end, this.props.bucketSize)
-    const bucketWidth = this.props.innerWidth / buckets.length
-    const selection = this.props.selection
-
-    let style = this.props.showOnDrag ? { position: 'absolute', left: '-1px', right: '-1px', backgroundColor: '#fafafa', border: '1px solid #eaeaea', borderBottom: 'none', bottom: 'calc(100% - ' + this.props.padding + 'px)' } : {}
-
+    } = this.props;
+    const innerHeight = style.padding ? height - style.padding : height;
 
     return (
       <div>
-        <svg style={Object.assign({}, style, histogramStyle)} width={this.props.width} height={this.props.height}>
-          <g transform={'translate(' + this.props.padding + ',' + this.props.height + ')'}>
-            <g transform='scale(1,-1)'>
+        <svg
+          style={Object.assign(
             {
-              buckets.map((bucket, i) => {
-                let opacity = 0
+              display: "block"
+            },
+            style
+          )}
+          width={width}
+          height={height}
+        >
+          <g transform={`translate(0, ${height})`}>
+            <g transform="scale(1,-1)">
+              {data.map((bucket, i) => {
+                let opacity = 0;
 
-                if (selection[0] > bucket.end || selection[1] < bucket.start) {
-                  opacity = 0
-                } else if (selection[0] <= bucket.start && selection[1] >= bucket.end) {
+                if (selection[0] > bucket.x || selection[1] < bucket.x0) {
+                  opacity = 0;
+                } else if (
+                  selection[0] <= bucket.x0 &&
+                  selection[1] >= bucket.x
+                ) {
                   // Entire block is covered
-                  opacity = 1
-                } else if (selection[0] > bucket.start && selection[1] > bucket.end) {
-                  opacity = 1 - (selection[0] - bucket.start) / (bucket.end - bucket.start)
+                  opacity = 1;
+                } else if (
+                  selection[0] > bucket.x0 &&
+                  selection[1] > bucket.x
+                ) {
+                  opacity =
+                    1 - (selection[0] - bucket.x0) / (bucket.x - bucket.x0);
                   // Some of left block is covered
-                } else if (selection[1] < bucket.end && selection[0] < bucket.start) {
+                } else if (
+                  selection[1] < bucket.x &&
+                  selection[0] < bucket.x0
+                ) {
                   // Some of right block is covered
-                  opacity = (selection[1] - bucket.start) / (bucket.end - bucket.start)
+                  opacity = (selection[1] - bucket.x0) / (bucket.x - bucket.x0);
                 } else {
                   // Parital match
-                  opacity = (selection[1] - selection[0]) / (bucket.end - bucket.start)
+                  opacity =
+                    (selection[1] - selection[0]) / (bucket.x - bucket.x0);
                 }
-
+                console.log(bucket.x0);
+                console.log(scale(bucket.x0));
                 return (
-                  <g key={i} transform={'translate(' + (i * bucketWidth) + ', 0)'}>
+                  <g
+                    key={i}
+                    transform={`translate(${scale(bucket.x0) +
+                      barPadding / 2} 0)`}
+                  >
                     <rect
-                      fill='#f1f1f1'
-                      width={bucketWidth - this.props.histogramPadding}
-                      height={(bucket.values.length / max) * innerHeight}
-                      rx={this.props.barBorderRadius}
-                      ry={this.props.barBorderRadius}
-                      x={this.props.histogramPadding / 2}
+                      fill="#f1f1f1"
+                      width={scale(bucket.x) - scale(bucket.x0)}
+                      height={bucket.y / max * innerHeight}
+                      rx={barBorderRadius}
+                      ry={barBorderRadius}
+                      x={0}
                     />
                     <rect
-                      fill={this.props.selectionColor}
+                      fill={selectionColor}
                       onClick={this.selectBucket.bind(this, bucket)}
-                      onDoubleClick={this.props.reset.bind(this)}
-                      style={{ opacity, cursor: 'pointer' }}
-                      width={bucketWidth - this.props.histogramPadding}
-                      height={(bucket.values.length / max) * innerHeight}
-                      rx={this.props.barBorderRadius}
-                      ry={this.props.barBorderRadius}
-                      x={this.props.histogramPadding / 2}
+                      onDoubleClick={reset.bind(this)}
+                      style={Object.assign(
+                        { opacity, cursor: "pointer" },
+                        barStyle
+                      )}
+                      width={scale(bucket.x) - scale(bucket.x0) - barPadding}
+                      height={bucket.y / max * innerHeight}
+                      rx={barBorderRadius}
+                      ry={barBorderRadius}
+                      x={0}
                     />
                   </g>
-                )
-              })
-            }
+                );
+              })}
             </g>
           </g>
         </svg>
       </div>
-    )
+    );
   }
 }
 
 Histogram.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.number).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      x0: PropTypes.number,
+      x: PropTypes.number,
+      y: PropTypes.number
+    })
+  ).isRequired,
   selection: PropTypes.arrayOf(PropTypes.number).isRequired,
-  start: PropTypes.number,
-  end: PropTypes.number,
+  barBorderRadius: PropTypes.number,
   bucketSize: PropTypes.number,
   width: PropTypes.number,
   innerWidth: PropTypes.number,
   height: PropTypes.number,
-  padding: PropTypes.number,
-  selectionColor: PropTypes.string,
-  histogramPadding: PropTypes.number,
   showOnDrag: PropTypes.bool,
   reset: PropTypes.func,
-  onChange: PropTypes.func,
-  barBorderRadius: PropTypes.number
-}
+  onChange: PropTypes.func
+};
 
 Histogram.defaultProps = {
-  barBorderRadius: 0,
   histogramPadding: 1
-}
+};
+
+export default Histogram;

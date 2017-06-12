@@ -1,104 +1,100 @@
-import React, { Component, PropTypes } from 'react'
-import { extent as e } from 'd3-array'
-import { scaleLinear as linear } from 'd3-scale'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { max, min } from "d3-array";
+import { scaleLinear as linear } from "d3-scale";
 
-import Histogram from './Histogram'
-import Slider from './Slider'
+import Histogram from "./Histogram";
+import Slider from "./Slider";
 
-const histosliderStyle = {
-  position: 'relative',
-  backgroundColor: '#fafafa',
-  border: '1px solid #eaeaea'
-}
-
-export default class Histoslider extends Component {
-
-  constructor () {
-    super()
+class Histoslider extends Component {
+  constructor() {
+    super();
     this.state = {
       dragging: false
-    }
+    };
   }
 
-  dragChange (dragging) {
-    this.setState({ dragging })
-  }
+  dragChange = dragging => {
+    // TODO - debounce
+    this.setState({ dragging });
+  };
 
-  reset () {
-    this.props.onChange(null)
-  }
+  reset = () => {
+    this.props.onChange(null);
+  };
 
-  render () {
-    const extent = e(this.props.data)
-    const start = this.props.start >= 0 ? this.props.start : Math.floor(extent[0] / this.props.bucketSize) * this.props.bucketSize
-    const end = this.props.end >= 0 ? this.props.end : Math.ceil(extent[1] / this.props.bucketSize) * this.props.bucketSize
+  render() {
+    const { style, data, width } = this.props;
+    const sortedData = data.sort((a, b) => a.x0 - b.x0);
+    const extent = [
+      min(sortedData, ({ x0 }) => x0),
+      max(sortedData, ({ x }) => x)
+    ];
+    const maxValue = max(sortedData, ({ y }) => y);
+    const scale = linear().domain(extent).range([0, width]);
 
-    const innerWidth = this.props.width - (this.props.padding * 2)
-    const scale = linear().domain([start, end]).range([this.props.padding, innerWidth + this.props.padding]).clamp(true)
-    let selection = this.props.selection ? this.props.selection : [start, end]
-    const selectionSorted = e(selection)
+    // FIXME
+    const selection = this.props.selection || extent;
 
-    // TODO: selection layer
+    const overrides = {
+      selection,
+      data: sortedData,
+      scale,
+      max: maxValue,
+      dragChange: this.dragChange,
+      reset: this.reset
+    };
+
     return (
-      <div style={Object.assign(histosliderStyle, { width: this.props.width, paddingTop: this.props.padding })} className='Histoslider Histoslider-wrapper'>
-
-        {
-          !this.props.showOnDrag || this.state.dragging
-          ? <Histogram
-            {...Object.assign(
-            {},
-            this.props,
-              {
-                start,
-                end,
-                reset: this.reset.bind(this),
-                extent,
-                selection: selectionSorted,
-                innerWidth,
-                scale,
-                height: this.props.height - 40
-              }
-          )
-          } />
-          : null
-        }
-
-        <Slider {...Object.assign({}, this.props, { start, end, dragChange: this.dragChange.bind(this), reset: this.reset.bind(this), extent, selection, selectionSorted, scale, innerWidth, height: 50 })} />
+      <div
+        style={Object.assign({}, style, {
+          width
+        })}
+        className="Histoslider Histoslider--wrapper"
+      >
+        {(!this.props.showOnDrag || this.state.dragging) &&
+          <Histogram {...Object.assign({}, this.props, overrides)} />}
+        <Slider {...Object.assign({}, this.props, overrides)} />
       </div>
-    )
+    );
   }
 }
 
 Histoslider.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.number).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      x0: PropTypes.number,
+      x: PropTypes.number,
+      y: PropTypes.number
+    })
+  ).isRequired,
   onChange: PropTypes.func.isRequired,
-  start: PropTypes.number,
-  end: PropTypes.number,
   selectionColor: PropTypes.string,
-  bucketSize: PropTypes.number,
   width: PropTypes.number,
   height: PropTypes.number,
-  padding: PropTypes.number,
   selection: PropTypes.arrayOf(PropTypes.number),
-  histogramHeight: PropTypes.number,
-  histogramPadding: PropTypes.number,
+  barStyle: PropTypes.object,
+  barBorderRadius: PropTypes.number,
+  barPadding: PropTypes.number,
+  histogramStyle: PropTypes.object,
+  sliderStyle: PropTypes.object,
   showOnDrag: PropTypes.bool,
   style: PropTypes.object,
-  barBorderRadius: PropTypes.number,
-  handleLabelFormat : PropTypes.string
-}
+  handleLabelFormat: PropTypes.string
+};
 
 Histoslider.defaultProps = {
-  bucketSize: 1,
-  selectionColor: '#2ecc71',
+  selectionColor: "red",
   showOnDrag: false,
-  histogramPadding: 4,
-  padding: 20,
   width: 400,
   height: 200,
-  barBorderRadius: 0,
-  style: {
-    border: '1px solid red'
-  },
-  handleLabelFormat : '0.3P'
-}
+  barBorderRadius: 3,
+  barPadding: 1,
+  style: {},
+  histogramStyle: {},
+  sliderStyle: {},
+  barStyle: {},
+  handleLabelFormat: "0.3P"
+};
+
+export default Histoslider;
