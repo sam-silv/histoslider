@@ -69,8 +69,6 @@ class Histogram extends Component {
                   opacity =
                     (selection[1] - selection[0]) / (bucket.x - bucket.x0);
                 }
-                console.log(bucket.x0);
-                console.log(scale(bucket.x0));
                 return (
                   <g
                     key={i}
