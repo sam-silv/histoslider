@@ -6,6 +6,8 @@ import { scaleLinear as linear } from "d3-scale";
 import Histogram from "./Histogram";
 import Slider from "./Slider";
 
+const SLIDER_HEIGHT = 30;
+
 class Histoslider extends Component {
   constructor() {
     super();
@@ -24,16 +26,21 @@ class Histoslider extends Component {
   };
 
   render() {
-    const { style, data, width } = this.props;
+    const { style, data, width, height, padding, sliderHeight } = this.props;
+
+    const innerHeight = height - padding * 2;
+    const innerWidth = width - padding * 2;
+    const histogramHeight = innerHeight - sliderHeight;
+
     const sortedData = data.sort((a, b) => a.x0 - b.x0);
     const extent = [
       min(sortedData, ({ x0 }) => x0),
       max(sortedData, ({ x }) => x)
     ];
     const maxValue = max(sortedData, ({ y }) => y);
-    const scale = linear().domain(extent).range([0, width]);
+    const scale = linear().domain(extent).range([0, innerWidth]);
+    scale.clamp(true);
 
-    // FIXME
     const selection = this.props.selection || extent;
 
     const overrides = {
@@ -42,19 +49,30 @@ class Histoslider extends Component {
       scale,
       max: maxValue,
       dragChange: this.dragChange,
-      reset: this.reset
+      reset: this.reset,
+      width: innerWidth,
+      dragging: this.state.dragging
     };
 
     return (
       <div
         style={Object.assign({}, style, {
-          width
+          width,
+          padding,
+          boxSizing: "border-box"
         })}
         className="Histoslider Histoslider--wrapper"
       >
-        {(!this.props.showOnDrag || this.state.dragging) &&
-          <Histogram {...Object.assign({}, this.props, overrides)} />}
-        <Slider {...Object.assign({}, this.props, overrides)} />
+        <Histogram
+          {...Object.assign({}, this.props, overrides, {
+            height: histogramHeight
+          })}
+        />
+        <Slider
+          {...Object.assign({}, this.props, overrides, {
+            height: sliderHeight
+          })}
+        />
       </div>
     );
   }
@@ -69,7 +87,8 @@ Histoslider.propTypes = {
     })
   ).isRequired,
   onChange: PropTypes.func.isRequired,
-  selectionColor: PropTypes.string,
+  selectedColor: PropTypes.string,
+  unselectedColor: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
   selection: PropTypes.arrayOf(PropTypes.number),
@@ -84,16 +103,15 @@ Histoslider.propTypes = {
 };
 
 Histoslider.defaultProps = {
-  selectionColor: "coral",
+  selectedColor: "coral",
+  unselectedColor: "#eee",
   showOnDrag: false,
   width: 400,
   height: 200,
   barBorderRadius: 3,
-  barPadding: 1,
-  style: {},
-  histogramStyle: {},
-  sliderStyle: {},
-  barStyle: {},
+  barPadding: 5,
+  padding: 20,
+  sliderHeight: 30,
   handleLabelFormat: "0.3P"
 };
 

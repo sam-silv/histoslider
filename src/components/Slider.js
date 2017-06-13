@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { format as d3Format } from "d3-format";
 
-const sliderStyle = {
-  display: "block",
-  paddingBottom: "8px",
-  zIndex: "2"
-};
-
 const handleStyle = {
-  cursor: "move"
+  cursor: "move",
+  userSekect: "none",
+  MozUserSelect: "none",
+  KhtmlUserSelect: "none",
+  WebkitUserSelect: "none",
+  OUserSelect: "none"
 };
 
 class Slider extends Component {
@@ -18,7 +17,7 @@ class Slider extends Component {
     window.addEventListener("mouseup", this.dragEnd.bind(this), false);
   }
 
-  componentWilUnmount() {
+  componentWillUnmount() {
     window.removeEventListener("mousemove", this.mouseMove.bind(this), false);
     window.removeEventListener("mouseup", this.dragEnd.bind(this), false);
   }
@@ -104,7 +103,9 @@ class Slider extends Component {
       height,
       reset,
       innerWidth,
-      selectionColor
+      selectedColor,
+      unselectedColor,
+      sliderStyle
     } = this.props;
     const selectionWidth = Math.abs(scale(selection[1]) - scale(selection[0]));
     const selectionSorted = selection.sort();
@@ -117,10 +118,10 @@ class Slider extends Component {
         onMouseDown={this.dragFromSVG.bind(this)}
         onDoubleClick={reset}
       >
-        <rect height={4} fill={"#f1f1f1"} x={0} y={10} width={innerWidth} />
+        <rect height={4} fill={unselectedColor} x={0} y={10} width={width} />
         <rect
           height={4}
-          fill={selectionColor}
+          fill={selectedColor}
           x={scale(selectionSorted[0])}
           y={10}
           width={selectionWidth}
@@ -149,7 +150,14 @@ class Slider extends Component {
                 stroke="#ccc"
                 strokeWidth="1"
               />
-              <text textAnchor="middle" x={0} y={36} fill="#666" fontSize={12}>
+              <text
+                style={handleStyle}
+                textAnchor="middle"
+                x={0}
+                y={36}
+                fill="#666"
+                fontSize={12}
+              >
                 {f(m)}
               </text>
             </g>
@@ -180,7 +188,17 @@ Slider.propTypes = {
   reset: PropTypes.func,
   dragChange: PropTypes.func,
   onChange: PropTypes.func,
-  handleLabelFormat: PropTypes.string
+  handleLabelFormat: PropTypes.string,
+  sliderStyle: PropTypes.object
+};
+
+Slider.defaultProps = {
+  sliderStyle: {
+    display: "block",
+    paddingBottom: "8px",
+    zIndex: "2",
+    overflow: "visible"
+  }
 };
 
 export default Slider;

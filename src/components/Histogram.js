@@ -10,12 +10,13 @@ class Histogram extends Component {
     const {
       height,
       data,
-      style,
+      histogramStyle,
       showOnDrag,
       selection,
       histogramPadding,
       reset,
-      selectionColor,
+      selectedColor,
+      unselectedColor,
       selectBucket,
       scale,
       barBorderRadius,
@@ -24,7 +25,6 @@ class Histogram extends Component {
       width,
       max
     } = this.props;
-    const innerHeight = style.padding ? height - style.padding : height;
 
     return (
       <div>
@@ -33,7 +33,7 @@ class Histogram extends Component {
             {
               display: "block"
             },
-            style
+            histogramStyle
           )}
           width={width}
           height={height}
@@ -76,15 +76,15 @@ class Histogram extends Component {
                       barPadding / 2} 0)`}
                   >
                     <rect
-                      fill="#f1f1f1"
-                      width={scale(bucket.x) - scale(bucket.x0)}
-                      height={bucket.y / max * innerHeight}
+                      fill={unselectedColor}
+                      width={scale(bucket.x) - scale(bucket.x0) - barPadding}
+                      height={bucket.y / max * height}
                       rx={barBorderRadius}
                       ry={barBorderRadius}
                       x={0}
                     />
                     <rect
-                      fill={selectionColor}
+                      fill={selectedColor}
                       onClick={this.selectBucket.bind(this, bucket)}
                       onDoubleClick={reset.bind(this)}
                       style={Object.assign(
@@ -92,7 +92,7 @@ class Histogram extends Component {
                         barStyle
                       )}
                       width={scale(bucket.x) - scale(bucket.x0) - barPadding}
-                      height={bucket.y / max * innerHeight}
+                      height={bucket.y / max * height}
                       rx={barBorderRadius}
                       ry={barBorderRadius}
                       x={0}

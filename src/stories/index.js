@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { storiesOf, action, linkTo } from "@storybook/react";
 import { Histogram, Histoslider, Slider } from "..";
 
@@ -25,15 +25,31 @@ const buckets = [
   }
 ];
 
+// Stateful container for testing interaction
+class HistosliderContainer extends Component {
+  state = {
+    selection: null
+  };
+  setSelection = selection => this.setState({ selection });
+  render = () =>
+    <Histoslider
+      // An array of data to show on the slider
+      data={buckets}
+      // A function to handle a change in the selection
+      selection={this.state.selection}
+      onChange={this.setSelection}
+      {...this.props}
+    />;
+}
+
+const containerFactory = props => <HistosliderContainer {...props} />;
+
 storiesOf("Histogram", module);
 storiesOf("Slider", module);
-storiesOf("Histoslider", module).add("default open", () =>
-  <Histoslider
-    // An array of data to show on the slider
-    data={buckets}
-    // A function to handle a change in the selection
-    onChange={array => {
-      console.log(array);
-    }}
-  />
-);
+storiesOf("Histoslider", module)
+  .add("Open", () => containerFactory())
+  .add("Show on drag", () =>
+    containerFactory({
+      showOnDrag: true
+    })
+  );
