@@ -32,7 +32,7 @@
     "start": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public -o docs",
     "build": "babel src --out-dir lib",
-    "prepare": "npm run build"
+    "prepare": "npm run build-storybook && npm run build"
   },
   "dependencies": {
     "prop-types": "^15.5.10"
