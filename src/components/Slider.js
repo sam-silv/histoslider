@@ -13,13 +13,13 @@ const handleStyle = {
 
 class Slider extends Component {
   componentDidMount() {
-    window.addEventListener("mousemove", this.mouseMove.bind(this), false);
-    window.addEventListener("mouseup", this.dragEnd.bind(this), false);
+    window.addEventListener("mousemove", this.mouseMove, false);
+    window.addEventListener("mouseup", this.dragEnd, false);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("mousemove", this.mouseMove.bind(this), false);
-    window.removeEventListener("mouseup", this.dragEnd.bind(this), false);
+    window.removeEventListener("mousemove", this.mouseMove, false);
+    window.removeEventListener("mouseup", this.dragEnd, false);
   }
 
   constructor() {
@@ -29,7 +29,7 @@ class Slider extends Component {
     };
   }
 
-  dragStart(index, e) {
+  dragStart = (index, e) => {
     e.stopPropagation();
     if (!this.state.dragging) {
       this.setState(
@@ -42,9 +42,9 @@ class Slider extends Component {
         }
       );
     }
-  }
+  };
 
-  dragEnd(e) {
+  dragEnd = e => {
     e.stopPropagation();
     this.setState(
       {
@@ -54,9 +54,9 @@ class Slider extends Component {
         this.props.dragChange(false);
       }
     );
-  }
+  };
 
-  dragFromSVG(e) {
+  dragFromSVG = e => {
     if (!this.state.dragging) {
       let selection = [...this.props.selection];
       let selected = this.props.scale.invert(e.nativeEvent.layerX);
@@ -83,15 +83,15 @@ class Slider extends Component {
         }
       );
     }
-  }
+  };
 
-  mouseMove(e) {
+  mouseMove = e => {
     if (this.state.dragging) {
       let selection = [...this.props.selection];
       selection[this.state.dragIndex] = this.props.scale.invert(e.layerX);
       this.props.onChange(selection);
     }
-  }
+  };
 
   render() {
     const {
@@ -115,7 +115,7 @@ class Slider extends Component {
         style={sliderStyle}
         height={height}
         width={width}
-        onMouseDown={this.dragFromSVG.bind(this)}
+        onMouseDown={this.dragFromSVG}
         onDoubleClick={reset}
       >
         <rect height={4} fill={unselectedColor} x={0} y={10} width={width} />
