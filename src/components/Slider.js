@@ -13,12 +13,10 @@ const handleStyle = {
 
 class Slider extends Component {
   componentDidMount() {
-    window.addEventListener("mousemove", this.mouseMove, false);
     window.addEventListener("mouseup", this.dragEnd, false);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("mousemove", this.mouseMove, false);
     window.removeEventListener("mouseup", this.dragEnd, false);
   }
 
@@ -48,7 +46,8 @@ class Slider extends Component {
     e.stopPropagation();
     this.setState(
       {
-        dragging: false
+        dragging: false,
+        dragIndex: null
       },
       () => {
         this.props.dragChange(false);
@@ -59,7 +58,7 @@ class Slider extends Component {
   dragFromSVG = e => {
     if (!this.state.dragging) {
       let selection = [...this.props.selection];
-      let selected = this.props.scale.invert(e.nativeEvent.layerX);
+      let selected = this.props.scale.invert(e.nativeEvent.offsetX);
       let dragIndex;
 
       if (
@@ -88,7 +87,9 @@ class Slider extends Component {
   mouseMove = e => {
     if (this.state.dragging) {
       let selection = [...this.props.selection];
-      selection[this.state.dragIndex] = this.props.scale.invert(e.layerX);
+      selection[this.state.dragIndex] = this.props.scale.invert(
+        e.nativeEvent.offsetX
+      );
       this.props.onChange(selection);
     }
   };
@@ -117,6 +118,7 @@ class Slider extends Component {
         width={width}
         onMouseDown={this.dragFromSVG}
         onDoubleClick={reset}
+        onMouseMove={this.mouseMove}
       >
         <rect height={4} fill={unselectedColor} x={0} y={10} width={width} />
         <rect

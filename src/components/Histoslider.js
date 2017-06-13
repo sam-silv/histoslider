@@ -103,15 +103,15 @@ Histoslider.propTypes = {
 };
 
 Histoslider.defaultProps = {
-  selectedColor: "coral",
-  unselectedColor: "#eee",
+  selectedColor: "#0074D9",
+  unselectedColor: "#DDDDDD",
   showOnDrag: false,
   width: 400,
   height: 200,
-  barBorderRadius: 3,
-  barPadding: 5,
+  barBorderRadius: 2,
+  barPadding: 3,
   padding: 20,
-  sliderHeight: 30,
+  sliderHeight: 25,
   handleLabelFormat: "0.3P"
 };
 
