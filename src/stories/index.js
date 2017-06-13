@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { storiesOf, action, linkTo } from "@storybook/react";
+import { storiesOf, linkTo } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 import { Histogram, Histoslider, Slider } from "..";
 
 const buckets = [
@@ -30,7 +31,10 @@ class HistosliderContainer extends Component {
   state = {
     selection: null
   };
-  setSelection = selection => this.setState({ selection });
+  setSelection = selection => {
+    action("setSelection");
+    this.setState({ selection });
+  };
   render = () =>
     <Histoslider
       // An array of data to show on the slider
@@ -41,15 +45,8 @@ class HistosliderContainer extends Component {
       {...this.props}
     />;
 }
-
-const containerFactory = props => <HistosliderContainer {...props} />;
-
 storiesOf("Histogram", module);
 storiesOf("Slider", module);
 storiesOf("Histoslider", module)
-  .add("Open", () => containerFactory())
-  .add("Show on drag", () =>
-    containerFactory({
-      showOnDrag: true
-    })
-  );
+  .add("Open", () => <HistosliderContainer />)
+  .add("Show on drag", () => <HistosliderContainer showOnDrag />);
