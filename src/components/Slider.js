@@ -11,6 +11,17 @@ const handleStyle = {
   OUserSelect: "none"
 };
 
+// Map keycodes to positive or negative values
+export const mapToKeyCode = code => {
+  const codes = {
+    37: -1,
+    38: 1,
+    39: 1,
+    40: -1
+  };
+  return codes[code] || null;
+};
+
 class Slider extends Component {
   componentDidMount() {
     window.addEventListener("mouseup", this.dragEnd, false);
@@ -94,6 +105,15 @@ class Slider extends Component {
     }
   };
 
+  keyDown = (index, e) => {
+    const direction = mapToKeyCode(e.keyCode);
+    const { keyboardStep } = this.props;
+    let selection = [...this.props.selection];
+    selection[index] =
+      keyboardStep * Math.round((selection[index] + direction) / keyboardStep);
+    this.props.onChange(selection);
+  };
+
   render() {
     const {
       selection,
@@ -131,6 +151,8 @@ class Slider extends Component {
         {selection.map((m, i) => {
           return (
             <g
+              tabIndex={0}
+              onKeyDown={this.keyDown.bind(this, i)}
               transform={`translate(${this.props.scale(m)}, 0)`}
               key={`handle-${i}`}
             >
@@ -188,6 +210,7 @@ Slider.propTypes = {
   histogramPadding: PropTypes.number,
   scale: PropTypes.func,
   reset: PropTypes.func,
+  keyboardStep: PropTypes.number,
   dragChange: PropTypes.func,
   onChange: PropTypes.func,
   handleLabelFormat: PropTypes.string,
@@ -200,7 +223,8 @@ Slider.defaultProps = {
     paddingBottom: "8px",
     zIndex: "2",
     overflow: "visible"
-  }
+  },
+  keyboardStep: 1
 };
 
 export default Slider;
