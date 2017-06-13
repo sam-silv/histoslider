@@ -220,7 +220,7 @@ Slider.defaultProps = {
   sliderStyle: {
     display: "block",
     paddingBottom: "8px",
-    zIndex: "2",
+    zIndex: 6,
     overflow: "visible"
   },
   keyboardStep: 1
