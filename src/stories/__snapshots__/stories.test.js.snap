@@ -21,15 +21,28 @@ exports[`Storyshots Histoslider More data 1`] = `
       Object {
         "boxSizing": "border-box",
         "padding": 20,
+        "position": "relative",
         "width": 800,
       }
     }
   >
-    <div>
+    <div
+      style={
+        Object {
+          "bottom": false,
+          "height": 135,
+          "opacity": 1,
+          "overflow": "hidden",
+          "position": false,
+          "zIndex": 0,
+        }
+      }
+    >
       <svg
         height={135}
         style={
           Object {
+            "backgroundColor": "white",
             "display": "block",
           }
         }
@@ -1455,7 +1468,7 @@ exports[`Storyshots Histoslider More data 1`] = `
           "display": "block",
           "overflow": "visible",
           "paddingBottom": "8px",
-          "zIndex": "2",
+          "zIndex": 6,
         }
       }
       width={760}
@@ -1622,15 +1635,28 @@ exports[`Storyshots Histoslider Non zero start 1`] = `
       Object {
         "boxSizing": "border-box",
         "padding": 20,
+        "position": "relative",
         "width": 800,
       }
     }
   >
-    <div>
+    <div
+      style={
+        Object {
+          "bottom": false,
+          "height": 135,
+          "opacity": 1,
+          "overflow": "hidden",
+          "position": false,
+          "zIndex": 0,
+        }
+      }
+    >
       <svg
         height={135}
         style={
           Object {
+            "backgroundColor": "white",
             "display": "block",
           }
         }
@@ -7256,7 +7282,7 @@ exports[`Storyshots Histoslider Non zero start 1`] = `
           "display": "block",
           "overflow": "visible",
           "paddingBottom": "8px",
-          "zIndex": "2",
+          "zIndex": 6,
         }
       }
       width={760}
@@ -7423,15 +7449,28 @@ exports[`Storyshots Histoslider Open 1`] = `
       Object {
         "boxSizing": "border-box",
         "padding": 20,
+        "position": "relative",
         "width": 400,
       }
     }
   >
-    <div>
+    <div
+      style={
+        Object {
+          "bottom": false,
+          "height": 135,
+          "opacity": 1,
+          "overflow": "hidden",
+          "position": false,
+          "zIndex": 0,
+        }
+      }
+    >
       <svg
         height={135}
         style={
           Object {
+            "backgroundColor": "white",
             "display": "block",
           }
         }
@@ -7569,7 +7608,7 @@ exports[`Storyshots Histoslider Open 1`] = `
           "display": "block",
           "overflow": "visible",
           "paddingBottom": "8px",
-          "zIndex": "2",
+          "zIndex": 6,
         }
       }
       width={360}
@@ -7736,15 +7775,28 @@ exports[`Storyshots Histoslider Show on drag 1`] = `
       Object {
         "boxSizing": "border-box",
         "padding": 20,
+        "position": "relative",
         "width": 400,
       }
     }
   >
-    <div>
+    <div
+      style={
+        Object {
+          "bottom": "calc(100% - 20px)",
+          "height": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "zIndex": 0,
+        }
+      }
+    >
       <svg
         height={135}
         style={
           Object {
+            "backgroundColor": "white",
             "display": "block",
           }
         }
@@ -7882,7 +7934,7 @@ exports[`Storyshots Histoslider Show on drag 1`] = `
           "display": "block",
           "overflow": "visible",
           "paddingBottom": "8px",
-          "zIndex": "2",
+          "zIndex": 6,
         }
       }
       width={360}
@@ -8049,15 +8101,28 @@ exports[`Storyshots Histoslider Stepping in lots of 100 1`] = `
       Object {
         "boxSizing": "border-box",
         "padding": 20,
+        "position": "relative",
         "width": 800,
       }
     }
   >
-    <div>
+    <div
+      style={
+        Object {
+          "bottom": false,
+          "height": 135,
+          "opacity": 1,
+          "overflow": "hidden",
+          "position": false,
+          "zIndex": 0,
+        }
+      }
+    >
       <svg
         height={135}
         style={
           Object {
+            "backgroundColor": "white",
             "display": "block",
           }
         }
@@ -8643,7 +8708,7 @@ exports[`Storyshots Histoslider Stepping in lots of 100 1`] = `
           "display": "block",
           "overflow": "visible",
           "paddingBottom": "8px",
-          "zIndex": "2",
+          "zIndex": 6,
         }
       }
       width={760}

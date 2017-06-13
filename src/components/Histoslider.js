@@ -70,7 +70,8 @@ class Histoslider extends Component {
         style={Object.assign({}, style, {
           width,
           padding,
-          boxSizing: "border-box"
+          boxSizing: "border-box",
+          position: "relative"
         })}
         className="Histoslider Histoslider--wrapper"
       >
