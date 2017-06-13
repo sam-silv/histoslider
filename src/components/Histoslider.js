@@ -21,6 +21,16 @@ class Histoslider extends Component {
     this.setState({ dragging });
   };
 
+  onChange = selection => {
+    const { data, onChange } = this.props;
+    const sortedData = data.sort((a, b) => a.x0 - b.x0);
+    const extent = [
+      min(sortedData, ({ x0 }) => x0),
+      max(sortedData, ({ x }) => x)
+    ];
+    onChange(selection.map(d => Math.max(extent[0], Math.min(extent[1], d))));
+  };
+
   reset = () => {
     this.props.onChange(null);
   };
@@ -49,6 +59,7 @@ class Histoslider extends Component {
       scale,
       max: maxValue,
       dragChange: this.dragChange,
+      onChange: this.onChange,
       reset: this.reset,
       width: innerWidth,
       dragging: this.state.dragging
