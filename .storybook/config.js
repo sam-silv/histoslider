@@ -1,7 +1,11 @@
-import { configure } from '@kadira/storybook';
+import { configure, addDecorator } from "@storybook/react";
+import { setOptions } from "@storybook/addon-options";
+import centered from "@storybook/addon-centered";
 
-function loadStories() {
-  require('../src/stories');
-}
+addDecorator(centered);
 
-configure(loadStories, module);
+setOptions({
+  name: "Histoslider"
+});
+
+configure(() => require("../src/stories"), module);

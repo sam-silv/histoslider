@@ -1,0 +1,8 @@
+src
+test
+*.test.js
+stories
+public
+docs
+.storybook
+circle.yml
