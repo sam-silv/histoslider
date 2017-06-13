@@ -26,6 +26,8 @@ class Histogram extends Component {
       max
     } = this.props;
 
+    const selectionSorted = Array.from(selection).sort((a, b) => +a - +b);
+
     return (
       <div>
         <svg
@@ -43,31 +45,37 @@ class Histogram extends Component {
               {data.map((bucket, i) => {
                 let opacity = 0;
 
-                if (selection[0] > bucket.x || selection[1] < bucket.x0) {
+                if (
+                  selectionSorted[0] > bucket.x ||
+                  selectionSorted[1] < bucket.x0
+                ) {
                   opacity = 0;
                 } else if (
-                  selection[0] <= bucket.x0 &&
-                  selection[1] >= bucket.x
+                  selectionSorted[0] <= bucket.x0 &&
+                  selectionSorted[1] >= bucket.x
                 ) {
                   // Entire block is covered
                   opacity = 1;
                 } else if (
-                  selection[0] > bucket.x0 &&
-                  selection[1] > bucket.x
+                  selectionSorted[0] > bucket.x0 &&
+                  selectionSorted[1] > bucket.x
                 ) {
                   opacity =
-                    1 - (selection[0] - bucket.x0) / (bucket.x - bucket.x0);
+                    1 -
+                    (selectionSorted[0] - bucket.x0) / (bucket.x - bucket.x0);
                   // Some of left block is covered
                 } else if (
-                  selection[1] < bucket.x &&
-                  selection[0] < bucket.x0
+                  selectionSorted[1] < bucket.x &&
+                  selectionSorted[0] < bucket.x0
                 ) {
                   // Some of right block is covered
-                  opacity = (selection[1] - bucket.x0) / (bucket.x - bucket.x0);
+                  opacity =
+                    (selectionSorted[1] - bucket.x0) / (bucket.x - bucket.x0);
                 } else {
                   // Parital match
                   opacity =
-                    (selection[1] - selection[0]) / (bucket.x - bucket.x0);
+                    (selectionSorted[1] - selectionSorted[0]) /
+                    (bucket.x - bucket.x0);
                 }
                 return (
                   <g
