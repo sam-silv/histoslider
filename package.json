@@ -25,6 +25,6 @@
   "scripts": {
     "test": "react-scripts test --env=jsdom",
     "start": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public -o docs"
   }
 }
