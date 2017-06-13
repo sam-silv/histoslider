@@ -187,6 +187,8 @@ exports[`Storyshots Histoslider Open 1`] = `
         y={10}
       />
       <g
+        onKeyDown={[Function]}
+        tabIndex={0}
         transform="translate(0, 0)"
       >
         <circle
@@ -246,6 +248,8 @@ exports[`Storyshots Histoslider Open 1`] = `
         </text>
       </g>
       <g
+        onKeyDown={[Function]}
+        tabIndex={0}
         transform="translate(360, 0)"
       >
         <circle
@@ -496,6 +500,8 @@ exports[`Storyshots Histoslider Show on drag 1`] = `
         y={10}
       />
       <g
+        onKeyDown={[Function]}
+        tabIndex={0}
         transform="translate(0, 0)"
       >
         <circle
@@ -555,6 +561,8 @@ exports[`Storyshots Histoslider Show on drag 1`] = `
         </text>
       </g>
       <g
+        onKeyDown={[Function]}
+        tabIndex={0}
         transform="translate(360, 0)"
       >
         <circle
