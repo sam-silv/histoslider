@@ -109,8 +109,7 @@ class Slider extends Component {
     const direction = mapToKeyCode(e.keyCode);
     const { keyboardStep } = this.props;
     let selection = [...this.props.selection];
-    selection[index] =
-      keyboardStep * Math.round((selection[index] + direction) / keyboardStep);
+    selection[index] = Math.round(selection[index] + direction * keyboardStep);
     this.props.onChange(selection);
   };
 
@@ -129,7 +128,7 @@ class Slider extends Component {
       sliderStyle
     } = this.props;
     const selectionWidth = Math.abs(scale(selection[1]) - scale(selection[0]));
-    const selectionSorted = selection.sort();
+    const selectionSorted = Array.from(selection).sort((a, b) => +a - +b);
     const f = d3Format(handleLabelFormat);
     return (
       <svg

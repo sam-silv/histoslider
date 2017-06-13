@@ -3,6 +3,13 @@ import { storiesOf, linkTo } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { Histogram, Histoslider, Slider } from "..";
 
+const stressTestData = (n, offset = 0, multiplier = 1) =>
+  Array.from(Array(n)).map((d, i) => ({
+    x0: (i + offset) * multiplier,
+    x: (i + 1 + offset) * multiplier,
+    y: (i % 5 + 1) * 10
+  }));
+
 const buckets = [
   {
     x0: 0,
@@ -49,4 +56,17 @@ storiesOf("Histogram", module);
 storiesOf("Slider", module);
 storiesOf("Histoslider", module)
   .add("Open", () => <HistosliderContainer />)
-  .add("Show on drag", () => <HistosliderContainer showOnDrag />);
+  .add("Show on drag", () => <HistosliderContainer showOnDrag />)
+  .add("More data", () =>
+    <HistosliderContainer data={stressTestData(50)} width={800} />
+  )
+  .add("Non zero start", () =>
+    <HistosliderContainer data={stressTestData(200, 2000, 10)} width={800} />
+  )
+  .add("Stepping in lots of 100", () =>
+    <HistosliderContainer
+      keyboardStep={100}
+      data={stressTestData(20, 1, 10)}
+      width={800}
+    />
+  );

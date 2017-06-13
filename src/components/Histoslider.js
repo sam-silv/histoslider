@@ -23,12 +23,12 @@ class Histoslider extends Component {
 
   onChange = selection => {
     const { data, onChange } = this.props;
-    const sortedData = data.sort((a, b) => a.x0 - b.x0);
+    const sortedData = data.sort((a, b) => +a.x0 - +b.x0);
     const extent = [
-      min(sortedData, ({ x0 }) => x0),
-      max(sortedData, ({ x }) => x)
+      min(sortedData, ({ x0 }) => +x0),
+      max(sortedData, ({ x }) => +x)
     ];
-    onChange(selection.map(d => Math.max(extent[0], Math.min(extent[1], d))));
+    onChange(selection.map(d => Math.max(extent[0], Math.min(extent[1], +d))));
   };
 
   reset = () => {
@@ -42,12 +42,12 @@ class Histoslider extends Component {
     const innerWidth = width - padding * 2;
     const histogramHeight = innerHeight - sliderHeight;
 
-    const sortedData = data.sort((a, b) => a.x0 - b.x0);
+    const sortedData = data.sort((a, b) => +a.x0 - +b.x0);
     const extent = [
-      min(sortedData, ({ x0 }) => x0),
-      max(sortedData, ({ x }) => x)
+      min(sortedData, ({ x0 }) => +x0),
+      max(sortedData, ({ x }) => +x)
     ];
-    const maxValue = max(sortedData, ({ y }) => y);
+    const maxValue = max(sortedData, ({ y }) => +y);
     const scale = linear().domain(extent).range([0, innerWidth]);
     scale.clamp(true);
 
