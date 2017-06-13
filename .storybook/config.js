@@ -1,7 +1,8 @@
-import { configure } from '@storybook/react';
+import { configure } from "@storybook/react";
+import { setOptions } from "@storybook/addon-options";
 
-function loadStories() {
-  require('../src/stories');
-}
+setOptions({
+  name: "Histoslider"
+});
 
-configure(loadStories, module);
+configure(() => require("../src/stories"), module);
