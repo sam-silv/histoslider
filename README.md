@@ -6,11 +6,26 @@ A D3 based histogram slider component for React. Useful for exploring distributi
 
 ## Usage
 
+`histoslider` has a few peer dependencies. Make sure these are installed before you go any further.
+
+* `react`
+* `react-dom`
+* `d3-array`
+* `d3-format`
+* `d3-scale`
+
+Then, to install, either
+
+`npm install histoslider --save`
+
+or
+
 `yarn add histoslider`
 
 Yay, glad we got that out of the way.
 
-### Component
+## Component API
+
 ```JSX
   <Histoslider
     // An array of objects to create the histogram
@@ -35,6 +50,9 @@ Yay, glad we got that out of the way.
     onChange={array => { console.log(array) }}
   />
 ```
+
+*more docs to come*
+
 ## Development
 
 `yarn start`
