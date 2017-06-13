@@ -13,7 +13,6 @@
     "d3-array": "^1.2.0",
     "d3-format": "^1.2.0",
     "d3-scale": "^1.0.6",
-    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-scripts": "^1.0.7",
@@ -32,5 +31,8 @@
     "build-storybook": "build-storybook -s public -o docs",
     "build": "babel src --out-dir lib",
     "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.10"
   }
 }
