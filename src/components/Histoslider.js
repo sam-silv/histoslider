@@ -84,7 +84,7 @@ Histoslider.propTypes = {
 };
 
 Histoslider.defaultProps = {
-  selectionColor: "red",
+  selectionColor: "coral",
   showOnDrag: false,
   width: 400,
   height: 200,
