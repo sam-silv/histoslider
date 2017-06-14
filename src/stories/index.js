@@ -57,6 +57,7 @@ storiesOf("Slider", module);
 storiesOf("Histoslider", module)
   .add("Open", () => <HistosliderContainer />)
   .add("Show on drag", () => <HistosliderContainer showOnDrag />)
+  .add("Disable histogram", () => <HistosliderContainer disableHistogram />)
   .add("More data", () =>
     <HistosliderContainer data={stressTestData(50)} width={800} />
   )

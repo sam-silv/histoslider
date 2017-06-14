@@ -36,7 +36,15 @@ class Histoslider extends Component {
   };
 
   render() {
-    const { style, data, width, height, padding, sliderHeight } = this.props;
+    const {
+      style,
+      data,
+      width,
+      height,
+      padding,
+      sliderHeight,
+      disableHistogram
+    } = this.props;
 
     const innerHeight = height - padding * 2;
     const innerWidth = width - padding * 2;
@@ -75,11 +83,12 @@ class Histoslider extends Component {
         })}
         className="Histoslider Histoslider--wrapper"
       >
-        <Histogram
-          {...Object.assign({}, this.props, overrides, {
-            height: histogramHeight
-          })}
-        />
+        {!disableHistogram &&
+          <Histogram
+            {...Object.assign({}, this.props, overrides, {
+              height: histogramHeight
+            })}
+          />}
         <Slider
           {...Object.assign({}, this.props, overrides, {
             height: sliderHeight
@@ -111,7 +120,8 @@ Histoslider.propTypes = {
   sliderStyle: PropTypes.object,
   showOnDrag: PropTypes.bool,
   style: PropTypes.object,
-  handleLabelFormat: PropTypes.string
+  handleLabelFormat: PropTypes.string,
+  disableHistogram: PropTypes.bool
 };
 
 Histoslider.defaultProps = {
