@@ -15,8 +15,8 @@
     "d3-array": "^1.2.0",
     "d3-format": "^1.2.0",
     "d3-scale": "^1.0.6",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^15.6.0",
+    "react-dom": "^15.6.0",
     "react-scripts": "^1.0.7",
     "react-test-renderer": "^15.5.4"
   },
@@ -24,8 +24,8 @@
     "d3-array": "^1.2.0",
     "d3-format": "^1.2.0",
     "d3-scale": "^1.0.6",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react": "^15.6.0",
+    "react-dom": "^15.6.0"
   },
   "scripts": {
     "test": "react-scripts test --env=jsdom",
