@@ -1,5 +1,187 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Histoslider Disable histogram 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "bottom": 0,
+      "display": "flex",
+      "justifyContent": "center",
+      "left": 0,
+      "position": "fixed",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <div
+    className="Histoslider Histoslider--wrapper"
+    style={
+      Object {
+        "boxSizing": "border-box",
+        "padding": 20,
+        "position": "relative",
+        "width": 400,
+      }
+    }
+  >
+    <svg
+      height={25}
+      onDoubleClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseMove={[Function]}
+      style={
+        Object {
+          "display": "block",
+          "overflow": "visible",
+          "paddingBottom": "8px",
+          "zIndex": 6,
+        }
+      }
+      width={360}
+    >
+      <rect
+        fill="#DDDDDD"
+        height={4}
+        width={360}
+        x={0}
+        y={10}
+      />
+      <rect
+        fill="#0074D9"
+        height={4}
+        width={360}
+        x={0}
+        y={10}
+      />
+      <g
+        onKeyDown={[Function]}
+        tabIndex={0}
+        transform="translate(0, 0)"
+      >
+        <circle
+          cx={0}
+          cy={12.5}
+          fill="#ddd"
+          r={10}
+          strokeWidth="1"
+          style={
+            Object {
+              "KhtmlUserSelect": "none",
+              "MozUserSelect": "none",
+              "OUserSelect": "none",
+              "WebkitUserSelect": "none",
+              "cursor": "move",
+              "userSekect": "none",
+            }
+          }
+        />
+        <circle
+          cx={0}
+          cy={12}
+          fill="white"
+          onMouseDown={[Function]}
+          r={9}
+          stroke="#ccc"
+          strokeWidth="1"
+          style={
+            Object {
+              "KhtmlUserSelect": "none",
+              "MozUserSelect": "none",
+              "OUserSelect": "none",
+              "WebkitUserSelect": "none",
+              "cursor": "move",
+              "userSekect": "none",
+            }
+          }
+        />
+        <text
+          fill="#666"
+          fontSize={12}
+          style={
+            Object {
+              "KhtmlUserSelect": "none",
+              "MozUserSelect": "none",
+              "OUserSelect": "none",
+              "WebkitUserSelect": "none",
+              "cursor": "move",
+              "userSekect": "none",
+            }
+          }
+          textAnchor="middle"
+          x={0}
+          y={36}
+        >
+          0
+        </text>
+      </g>
+      <g
+        onKeyDown={[Function]}
+        tabIndex={0}
+        transform="translate(360, 0)"
+      >
+        <circle
+          cx={0}
+          cy={12.5}
+          fill="#ddd"
+          r={10}
+          strokeWidth="1"
+          style={
+            Object {
+              "KhtmlUserSelect": "none",
+              "MozUserSelect": "none",
+              "OUserSelect": "none",
+              "WebkitUserSelect": "none",
+              "cursor": "move",
+              "userSekect": "none",
+            }
+          }
+        />
+        <circle
+          cx={0}
+          cy={12}
+          fill="white"
+          onMouseDown={[Function]}
+          r={9}
+          stroke="#ccc"
+          strokeWidth="1"
+          style={
+            Object {
+              "KhtmlUserSelect": "none",
+              "MozUserSelect": "none",
+              "OUserSelect": "none",
+              "WebkitUserSelect": "none",
+              "cursor": "move",
+              "userSekect": "none",
+            }
+          }
+        />
+        <text
+          fill="#666"
+          fontSize={12}
+          style={
+            Object {
+              "KhtmlUserSelect": "none",
+              "MozUserSelect": "none",
+              "OUserSelect": "none",
+              "WebkitUserSelect": "none",
+              "cursor": "move",
+              "userSekect": "none",
+            }
+          }
+          textAnchor="middle"
+          x={0}
+          y={36}
+        >
+          4
+        </text>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Histoslider More data 1`] = `
 <div
   style={
