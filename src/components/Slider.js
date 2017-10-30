@@ -36,11 +36,15 @@ class Slider extends Component {
     this.state = {
       dragging: false
     };
+    this._mouseMove = this.mouseMove.bind(this)
   }
 
   dragStart = (index, e) => {
     e.stopPropagation();
+
     if (!this.state.dragging) {
+      window.addEventListener("mousemove", this._mouseMove, false);
+
       this.setState(
         {
           dragging: true,
@@ -54,6 +58,8 @@ class Slider extends Component {
   };
 
   dragEnd = e => {
+    window.removeEventListener("mousemove", this._mouseMove, false);
+
     e.stopPropagation();
     this.setState(
       {
@@ -68,25 +74,18 @@ class Slider extends Component {
 
   dragFromSVG = e => {
     if (!this.state.dragging) {
+      window.addEventListener("mousemove", this._mouseMove, false);
+
       let selection = [...this.props.selection];
-      let selected = this.props.scale.invert(e.nativeEvent.offsetX);
-      let dragIndex;
+      let selected = this.props.scale.invert(e.clientX - this.svg.getBoundingClientRect().x);
+      let dragIndex = 2;
 
-      if (
-        Math.abs(selected - selection[0]) > Math.abs(selected - selection[1])
-      ) {
-        selection[1] = selected;
-        dragIndex = 0;
-      } else {
-        selection[0] = selected;
-        dragIndex = 1;
-      }
-
-      this.props.onChange(selection);
       this.setState(
         {
           dragging: true,
-          dragIndex
+          dragIndex,
+          dragReference: selected - selection[0],
+          dragWindow: selection[1] - selection[0]
         },
         () => {
           this.props.dragChange(true);
@@ -98,9 +97,18 @@ class Slider extends Component {
   mouseMove = e => {
     if (this.state.dragging) {
       let selection = [...this.props.selection];
-      selection[this.state.dragIndex] = this.props.scale.invert(
-        e.nativeEvent.offsetX
-      );
+      let pos = this.props.scale.invert(e.clientX - this.svg.getBoundingClientRect().x);
+
+
+      if(this.state.dragIndex < 2){
+        selection[this.state.dragIndex] = pos;  
+      }else{
+        selection = [
+          pos - this.state.dragReference,
+          pos - this.state.dragReference + this.state.dragWindow
+        ]
+      }
+      
       this.props.onChange(selection);
     }
   };
@@ -137,16 +145,33 @@ class Slider extends Component {
         width={width}
         onMouseDown={this.dragFromSVG}
         onDoubleClick={reset}
-        onMouseMove={this.mouseMove}
+        ref={e => this.svg = e}
       >
         <rect height={4} fill={unselectedColor} x={0} y={10} width={width} />
-        <rect
+        {selection[0] < selection[1] ? <rect
           height={4}
           fill={selectedColor}
           x={scale(selectionSorted[0])}
           y={10}
           width={selectionWidth}
-        />
+        /> : [
+          <rect
+            key='left'
+            height={4}
+            fill={selectedColor}
+            x={0}
+            y={10}
+            width={scale(selectionSorted[0])}
+          />,
+          <rect
+            key='right'
+            height={4}
+            fill={selectedColor}
+            x={scale(selectionSorted[1])}
+            y={10}
+            width={width - scale(selectionSorted[1])}
+          />
+        ]}
         {selection.map((m, i) => {
           return (
             <g

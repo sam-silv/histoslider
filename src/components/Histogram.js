@@ -98,6 +98,8 @@ class Histogram extends Component {
                           (selectionSorted[1] - selectionSorted[0]) /
                           (bucket.x - bucket.x0);
                       }
+
+
                       return (
                         <g
                           key={i}
@@ -119,7 +121,10 @@ class Histogram extends Component {
                             onClick={this.selectBucket.bind(this, bucket)}
                             onDoubleClick={reset.bind(this)}
                             style={Object.assign(
-                              { opacity, cursor: "pointer" },
+                              { 
+                                opacity: selection[0] > selection[1] ? (1 - opacity) : opacity, 
+                                cursor: "pointer" 
+                              },
                               barStyle
                             )}
                             width={
