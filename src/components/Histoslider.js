@@ -55,7 +55,7 @@ class Histoslider extends Component {
       min(sortedData, ({ x0 }) => +x0),
       max(sortedData, ({ x }) => +x)
     ];
-    const maxValue = max(sortedData, ({ y }) => +y);
+    const maxValue = max(sortedData, ({ y }) => Array.isArray(y) ? y.reduce((a, b) => a + b) : (+y) );
     const scale = linear().domain(extent).range([0, innerWidth]);
     scale.clamp(true);
 
@@ -130,7 +130,7 @@ Histoslider.defaultProps = {
   showOnDrag: false,
   width: 400,
   height: 200,
-  barBorderRadius: 2,
+  barBorderRadius: 0,
   barPadding: 3,
   padding: 20,
   sliderHeight: 25,

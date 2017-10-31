@@ -99,6 +99,7 @@ class Histogram extends Component {
                           (bucket.x - bucket.x0);
                       }
 
+                      let bucket_y = typeof bucket.y === 'number' ? [ bucket.y ] : bucket.y;
 
                       return (
                         <g
@@ -111,30 +112,36 @@ class Histogram extends Component {
                             width={
                               scale(bucket.x) - scale(bucket.x0) - barPadding
                             }
-                            height={bucket.y / max * height}
+                            height={(typeof bucket.y === 'number' ? bucket.y : bucket.y.reduce((a, b) => a + b, 0)) / max * height}
                             rx={barBorderRadius}
                             ry={barBorderRadius}
                             x={0}
                           />
-                          <rect
-                            fill={selectedColor}
-                            onClick={this.selectBucket.bind(this, bucket)}
-                            onDoubleClick={reset.bind(this)}
-                            style={Object.assign(
-                              { 
-                                opacity: selection[0] > selection[1] ? (1 - opacity) : opacity, 
-                                cursor: "pointer" 
-                              },
-                              barStyle
-                            )}
-                            width={
-                              scale(bucket.x) - scale(bucket.x0) - barPadding
-                            }
-                            height={bucket.y / max * height}
-                            rx={barBorderRadius}
-                            ry={barBorderRadius}
-                            x={0}
-                          />
+                          {
+                            bucket_y.map((k, i) => 
+                                <rect
+                                  key={i}
+                                  fill={selectedColor}
+                                  className={'bar-' + i}
+                                  onClick={this.selectBucket.bind(this, bucket)}
+                                  onDoubleClick={reset.bind(this)}
+                                  style={Object.assign(
+                                    { 
+                                      opacity: 0.1 + 0.9 * (selection[0] > selection[1] ? (1 - opacity) : opacity), 
+                                      cursor: "pointer" 
+                                    },
+                                    barStyle
+                                  )}
+                                  width={
+                                    scale(bucket.x) - scale(bucket.x0) - barPadding
+                                  }
+                                  height={k / max * height}
+                                  rx={barBorderRadius}
+                                  ry={barBorderRadius}
+                                  x={0}
+                                  y={bucket_y.slice(0, i).reduce((a, b) => a + b, 0) / max * height}
+                                />)
+                          }
                         </g>
                       );
                     })}

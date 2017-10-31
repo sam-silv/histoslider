@@ -10,6 +10,14 @@ const stressTestData = (n, offset = 0, multiplier = 1) =>
     y: (i % 5 + 1) * 10
   }));
 
+
+const stackedBarTestData = (n, offset = 0, multiplier = 1) =>
+  Array.from(Array(n)).map((d, i) => ({
+    x0: (i + offset) * multiplier,
+    x: (i + 1 + offset) * multiplier,
+    y: [(i % 5 + 1) * 3, (i % 7 + 1) * (i % 3), (i % 2 + 3) * (i % 5) * 2]
+  }));
+
 const buckets = [
   {
     x0: 0,
@@ -63,6 +71,9 @@ storiesOf("Histoslider", module)
   )
   .add("Non zero start", () =>
     <HistosliderContainer data={stressTestData(200, 2000, 10)} width={800} />
+  )
+  .add("Stacked Bar Test", () =>
+    <HistosliderContainer data={stackedBarTestData(50)} width={800} />
   )
   .add("Stepping in lots of 100", () =>
     <HistosliderContainer
