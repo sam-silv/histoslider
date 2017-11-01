@@ -105,7 +105,10 @@ Histoslider.propTypes = {
     PropTypes.shape({
       x0: PropTypes.number,
       x: PropTypes.number,
-      y: PropTypes.number
+      y: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.arrayOf(PropTypes.number)
+      ])
     })
   ).isRequired,
   onChange: PropTypes.func.isRequired,
@@ -134,7 +137,7 @@ Histoslider.defaultProps = {
   barBorderRadius: 0,
   barPadding: 3,
   padding: 0,
-  sliderHeight: 50,
+  sliderHeight: 40,
   handleLabelFormat: "0.3P",
 };
 
