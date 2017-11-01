@@ -157,12 +157,12 @@ class Slider extends Component {
         onDoubleClick={reset}
         ref={e => this.svg = e}
       >
-        <rect height={4} fill={unselectedColor} x={0} y={height-40} width={width} />
+        <rect height={4} fill={unselectedColor} x={0} y={height-40 + 10} width={width} />
         {selection[0] < selection[1] ? <rect
           height={4}
           fill={selectedColor}
           x={scale(selectionSorted[0])}
-          y={height-40}
+          y={height-40 + 10}
           width={selectionWidth}
         /> : [
           <rect
@@ -170,7 +170,7 @@ class Slider extends Component {
             height={4}
             fill={selectedColor}
             x={0}
-            y={height-40}
+            y={height-40 + 10}
             width={scale(selectionSorted[0])}
           />,
           <rect
@@ -178,7 +178,7 @@ class Slider extends Component {
             height={4}
             fill={selectedColor}
             x={scale(selectionSorted[1])}
-            y={height-40}
+            y={height-40 + 10}
             width={width - scale(selectionSorted[1])}
           />
         ]}
@@ -195,7 +195,7 @@ class Slider extends Component {
                 onMouseDown={this.dragStart.bind(this, i)}
                 r={9}
                 cx={0}
-                cy={height - 38}
+                cy={height - 38 + 10}
                 fill="white"
                 stroke="#ccc"
                 strokeWidth="1"
@@ -204,7 +204,7 @@ class Slider extends Component {
                 style={handleStyle}
                 textAnchor="middle"
                 x={0}
-                y={height - 10}
+                y={height - 15 + 10}
                 fill="#666"
                 fontSize={12}
               >
