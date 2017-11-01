@@ -163,7 +163,10 @@ Histogram.propTypes = {
     PropTypes.shape({
       x0: PropTypes.number,
       x: PropTypes.number,
-      y: PropTypes.number
+      y: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.arrayOf(PropTypes.number)
+      ])
     })
   ).isRequired,
   selection: PropTypes.arrayOf(PropTypes.number).isRequired,
