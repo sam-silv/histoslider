@@ -248,6 +248,7 @@ Slider.defaultProps = {
     display: "block",
     zIndex: 6,
     overflow: "visible",
+    position: "relative"
   },
   keyboardStep: 1
 };

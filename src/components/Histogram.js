@@ -42,7 +42,6 @@ class Histogram extends Component {
           return (
             <div
               style={Object.assign({}, s, {
-                zIndex: -1,
                 overflow: "hidden",
                 position: showOnDrag && "absolute",
                 bottom: showOnDrag && `calc(100% - ${padding}px)`,
