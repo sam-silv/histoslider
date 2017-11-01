@@ -83,17 +83,18 @@ class Histoslider extends Component {
         })}
         className="Histoslider Histoslider--wrapper"
       >
+        <Slider
+          {...Object.assign({}, this.props, overrides, {
+            height: histogramHeight + sliderHeight,
+            sliderHeight
+          })}
+        />
         {!disableHistogram &&
           <Histogram
             {...Object.assign({}, this.props, overrides, {
               height: histogramHeight
             })}
           />}
-        <Slider
-          {...Object.assign({}, this.props, overrides, {
-            height: sliderHeight
-          })}
-        />
       </div>
     );
   }
@@ -132,9 +133,9 @@ Histoslider.defaultProps = {
   height: 200,
   barBorderRadius: 0,
   barPadding: 3,
-  padding: 20,
-  sliderHeight: 25,
-  handleLabelFormat: "0.3P"
+  padding: 0,
+  sliderHeight: 50,
+  handleLabelFormat: "0.3P",
 };
 
 export default Histoslider;

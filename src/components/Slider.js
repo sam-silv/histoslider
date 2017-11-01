@@ -80,17 +80,27 @@ class Slider extends Component {
       let selected = this.props.scale.invert(e.clientX - this.svg.getBoundingClientRect().x);
       let dragIndex = 2;
 
-      this.setState(
-        {
+      let dy = e.clientY - this.svg.getBoundingClientRect().y
+
+      if(dy < (this.props.height - this.props.sliderHeight)){
+        this.setState({
+          dragging: true,
+          dragIndex: 1,
+        }, () => {
+          this.props.dragChange(true)
+          this.props.onChange([selected, selected])
+        })
+      } else {
+        this.setState({
           dragging: true,
           dragIndex,
           dragReference: selected - selection[0],
           dragWindow: selection[1] - selection[0]
-        },
-        () => {
-          this.props.dragChange(true);
-        }
-      );
+        }, () => {
+          this.props.dragChange(true)
+        })              
+      } 
+
     }
   };
 
@@ -147,12 +157,12 @@ class Slider extends Component {
         onDoubleClick={reset}
         ref={e => this.svg = e}
       >
-        <rect height={4} fill={unselectedColor} x={0} y={10} width={width} />
+        <rect height={4} fill={unselectedColor} x={0} y={height-40} width={width} />
         {selection[0] < selection[1] ? <rect
           height={4}
           fill={selectedColor}
           x={scale(selectionSorted[0])}
-          y={10}
+          y={height-40}
           width={selectionWidth}
         /> : [
           <rect
@@ -160,7 +170,7 @@ class Slider extends Component {
             height={4}
             fill={selectedColor}
             x={0}
-            y={10}
+            y={height-40}
             width={scale(selectionSorted[0])}
           />,
           <rect
@@ -168,7 +178,7 @@ class Slider extends Component {
             height={4}
             fill={selectedColor}
             x={scale(selectionSorted[1])}
-            y={10}
+            y={height-40}
             width={width - scale(selectionSorted[1])}
           />
         ]}
@@ -182,18 +192,10 @@ class Slider extends Component {
             >
               <circle
                 style={handleStyle}
-                r={10}
-                cx={0}
-                cy={12.5}
-                fill="#ddd"
-                strokeWidth="1"
-              />
-              <circle
-                style={handleStyle}
                 onMouseDown={this.dragStart.bind(this, i)}
                 r={9}
                 cx={0}
-                cy={12}
+                cy={height - 38}
                 fill="white"
                 stroke="#ccc"
                 strokeWidth="1"
@@ -202,7 +204,7 @@ class Slider extends Component {
                 style={handleStyle}
                 textAnchor="middle"
                 x={0}
-                y={36}
+                y={height - 10}
                 fill="#666"
                 fontSize={12}
               >
@@ -244,9 +246,8 @@ Slider.propTypes = {
 Slider.defaultProps = {
   sliderStyle: {
     display: "block",
-    paddingBottom: "8px",
     zIndex: 6,
-    overflow: "visible"
+    overflow: "visible",
   },
   keyboardStep: 1
 };
