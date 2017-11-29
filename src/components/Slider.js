@@ -203,7 +203,7 @@ class Slider extends Component {
               <text
                 style={handleStyle}
                 textAnchor={i == 0 ? "start" : "end"}
-                x={i == 0 ? 0 : 9}
+                x={i == 0 ? -9 : 9}
                 y={height - 15 + 10}
                 fill="#666"
                 fontSize={12}
