@@ -202,8 +202,8 @@ class Slider extends Component {
               />
               <text
                 style={handleStyle}
-                textAnchor="middle"
-                x={0}
+                textAnchor={i == 0 ? "left" : "right"}
+                x={i == 0 ? 0 : 9}
                 y={height - 15 + 10}
                 fill="#666"
                 fontSize={12}
