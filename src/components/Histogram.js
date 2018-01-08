@@ -142,7 +142,7 @@ class Histogram extends Component {
                     selection[0] < selection[1] ? <g>
                       <rect
                         width={scale(selectionSorted[0])}
-                        fill={'rgba(255,255,255,.9)'}
+                        fill={occlusionColor}
                         height={height}
                         x={0}
                         y={0}
