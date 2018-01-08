@@ -101,6 +101,7 @@ class Histogram extends Component {
                       }
 
                       let bucket_y = typeof bucket.y === 'number' ? [ bucket.y ] : bucket.y;
+                      let width = scale(bucket.x) - scale(bucket.x0) - barPadding
 
                       return (
                         <g
@@ -108,16 +109,6 @@ class Histogram extends Component {
                           transform={`translate(${scale(bucket.x0) +
                             barPadding / 2} 0)`}
                         >
-                          <rect
-                            fill={unselectedColor}
-                            width={
-                              scale(bucket.x) - scale(bucket.x0) - barPadding
-                            }
-                            height={(typeof bucket.y === 'number' ? bucket.y : bucket.y.reduce((a, b) => a + b, 0)) / max * height}
-                            rx={barBorderRadius}
-                            ry={barBorderRadius}
-                            x={0}
-                          />
                           {
                             bucket_y.map((k, i) => 
                                 <rect
@@ -127,15 +118,13 @@ class Histogram extends Component {
                                   onClick={this.selectBucket.bind(this, bucket)}
                                   onDoubleClick={reset.bind(this)}
                                   style={Object.assign(
-                                    { 
-                                      opacity: 0.1 + 0.9 * (selection[0] > selection[1] ? (1 - opacity) : opacity), 
+                                    {
+                                      // opacity: 0.1 + 0.9 * (selection[0] > selection[1] ? (1 - opacity) : opacity), 
                                       cursor: "pointer" 
                                     },
                                     barStyle
                                   )}
-                                  width={
-                                    scale(bucket.x) - scale(bucket.x0) - barPadding
-                                  }
+                                  width={width}
                                   height={k / max * height}
                                   rx={barBorderRadius}
                                   ry={barBorderRadius}
@@ -148,6 +137,32 @@ class Histogram extends Component {
                     })}
                   </g>
                 </g>
+                  {
+                    selection[0] < selection[1] ? <g>
+                      <rect
+                        width={scale(selectionSorted[0])}
+                        fill={'rgba(255,255,255,.9)'}
+                        height={height}
+                        x={0}
+                        y={0}
+                      />
+                      <rect
+                        width={width - scale(selectionSorted[1])}
+                        fill={'rgba(255,255,255,.9)'}
+                        height={height}
+                        x={scale(selectionSorted[1])}
+                        y={0}
+                      />
+                    </g>
+                    : <rect
+                      width={scale(selectionSorted[1] - selectionSorted[0])}
+                      fill={'rgba(255,255,255,.9)'}
+                      height={height}
+                      x={scale(selectionSorted[0])}
+                      y={0}
+                    />
+                  }
+                  
               </svg>
             </div>
           );
