@@ -26,7 +26,8 @@ class Histogram extends Component {
       barPadding,
       width,
       max,
-      dragging
+      dragging,
+      occlusionColor
     } = this.props;
 
     const selectionSorted = Array.from(selection).sort((a, b) => +a - +b);
@@ -148,7 +149,7 @@ class Histogram extends Component {
                       />
                       <rect
                         width={width - scale(selectionSorted[1])}
-                        fill={'rgba(255,255,255,.9)'}
+                        fill={occlusionColor}
                         height={height}
                         x={scale(selectionSorted[1])}
                         y={0}
@@ -156,7 +157,7 @@ class Histogram extends Component {
                     </g>
                     : <rect
                       width={scale(selectionSorted[1] - selectionSorted[0])}
-                      fill={'rgba(255,255,255,.9)'}
+                      fill={occlusionColor}
                       height={height}
                       x={scale(selectionSorted[0])}
                       y={0}

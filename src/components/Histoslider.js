@@ -139,6 +139,7 @@ Histoslider.defaultProps = {
   padding: 0,
   sliderHeight: 40,
   handleLabelFormat: "0.3P",
+  occlusionColor: 'rgba(255,255,255,.8)',
 };
 
 export default Histoslider;
