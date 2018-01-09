@@ -163,10 +163,12 @@ class Slider extends Component {
           fill={selectedColor}
           x={scale(selectionSorted[0])}
           y={height-40 + 10}
+          className='selected-slider-range'
           width={selectionWidth}
         /> : [
           <rect
             key='left'
+            className='selected-slider-range'
             height={4}
             fill={selectedColor}
             x={0}
@@ -175,6 +177,7 @@ class Slider extends Component {
           />,
           <rect
             key='right'
+            className='selected-slider-range'
             height={4}
             fill={selectedColor}
             x={scale(selectionSorted[1])}

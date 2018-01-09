@@ -141,6 +141,7 @@ class Histogram extends Component {
                   {
                     selection[0] < selection[1] ? <g>
                       <rect
+                        className='cover'
                         width={scale(selectionSorted[0])}
                         fill={occlusionColor}
                         height={height}
@@ -148,6 +149,7 @@ class Histogram extends Component {
                         y={0}
                       />
                       <rect
+                        className='cover'
                         width={width - scale(selectionSorted[1])}
                         fill={occlusionColor}
                         height={height}
@@ -156,6 +158,7 @@ class Histogram extends Component {
                       />
                     </g>
                     : <rect
+                      className='cover'
                       width={scale(selectionSorted[1] - selectionSorted[0])}
                       fill={occlusionColor}
                       height={height}
