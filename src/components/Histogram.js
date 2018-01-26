@@ -112,7 +112,7 @@ class Histogram extends Component {
                         >
                           {
                             bucket_y.map((k, i) => 
-                                height > 0 && <rect
+                                height > 0 && k > 0 && max > 0 && <rect
                                   key={i}
                                   fill={selectedColor}
                                   className={'bar-' + i}
