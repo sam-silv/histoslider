@@ -7,7 +7,7 @@
   "devDependencies": {
     "@storybook/addon-actions": "^5.0.6",
     "@storybook/addon-centered": "^5.0.6",
-    "@storybook/addon-options": "^3.1.2",
+    "@storybook/addon-options": "^5.0.6",
     "@storybook/addon-storyshots": "^5.0.6",
     "@storybook/react": "5.0.6",
     "babel-cli": "^6.24.1",
