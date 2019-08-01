@@ -28,9 +28,6 @@ build/Release
 node_modules
 lib/*
 
-#Storybook build
-docs
-
 #Build
 lib
 
