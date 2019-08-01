@@ -70,4 +70,8 @@ storiesOf("Histoslider", module)
       data={stressTestData(20, 1, 10)}
       width={800}
     />
+  )
+  .add("No labels", () => 
+    <HistosliderContainer
+      showLabels={false}/>
   );
