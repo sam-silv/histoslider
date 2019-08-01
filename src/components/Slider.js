@@ -155,7 +155,7 @@ class Slider extends Component {
               onKeyDown={this.keyDown.bind(this, i)}
               transform={`translate(${this.props.scale(m)}, 0)`}
               key={`handle-${i}`}
-              style={this.props.labelStyle}
+              style={{outline: 'none'}}
             >
               <circle
                 style={handleStyle}
