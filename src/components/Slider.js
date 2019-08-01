@@ -125,7 +125,8 @@ class Slider extends Component {
       innerWidth,
       selectedColor,
       unselectedColor,
-      sliderStyle
+      sliderStyle,
+      showLabels
     } = this.props;
     const selectionWidth = Math.abs(scale(selection[1]) - scale(selection[0]));
     const selectionSorted = Array.from(selection).sort((a, b) => +a - +b);
@@ -154,6 +155,7 @@ class Slider extends Component {
               onKeyDown={this.keyDown.bind(this, i)}
               transform={`translate(${this.props.scale(m)}, 0)`}
               key={`handle-${i}`}
+              style={this.props.labelStyle}
             >
               <circle
                 style={handleStyle}
@@ -173,16 +175,20 @@ class Slider extends Component {
                 stroke="#ccc"
                 strokeWidth="1"
               />
-              <text
-                style={handleStyle}
-                textAnchor="middle"
-                x={0}
-                y={36}
-                fill="#666"
-                fontSize={12}
-              >
-                {f(m)}
-              </text>
+              {
+                (showLabels
+                  ? <text
+                      style={handleStyle}
+                      textAnchor="middle"
+                      x={0}
+                      y={36}
+                      fill="#666"
+                      fontSize={12}
+                    >
+                      {f(m)}
+                    </text>
+                  : null)
+              }
             </g>
           );
         })}
@@ -213,7 +219,9 @@ Slider.propTypes = {
   dragChange: PropTypes.func,
   onChange: PropTypes.func,
   handleLabelFormat: PropTypes.string,
-  sliderStyle: PropTypes.object
+  sliderStyle: PropTypes.object,
+  showLabels: PropTypes.bool,
+  labelStyle: PropTypes.object
 };
 
 Slider.defaultProps = {
@@ -223,7 +231,8 @@ Slider.defaultProps = {
     zIndex: 6,
     overflow: "visible"
   },
-  keyboardStep: 1
+  keyboardStep: 1,
+  showLabels: true
 };
 
 export default Slider;
