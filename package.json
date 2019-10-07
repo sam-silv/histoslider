@@ -6,7 +6,7 @@
   "description": "D3 based histogram slider component for React",
   "devDependencies": {
     "@storybook/addon-actions": "^5.2.2",
-    "@storybook/addon-centered": "^3.1.2",
+    "@storybook/addon-centered": "^5.2.2",
     "@storybook/addon-options": "^3.1.2",
     "@storybook/addon-storyshots": "^3.1.2",
     "@storybook/react": "3.1.9",
