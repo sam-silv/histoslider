@@ -28,10 +28,11 @@ declare module 'histoslider' {
         showOnDrag?: boolean;
         style?: any;
         handleLabelFormat?: string;
+        formatLabelFunction?: (value: number) => string;
         disableHistogram?: boolean;
         showLabels?: boolean;
     }
 
-    export class Histoslider extends React.Component<HistosliderProps, any> { 
+    export class Histoslider extends React.Component<HistosliderProps, any> {
     }
 }

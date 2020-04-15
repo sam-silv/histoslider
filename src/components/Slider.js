@@ -119,6 +119,7 @@ class Slider extends Component {
       scale,
       format,
       handleLabelFormat,
+      formatLabelFunction,
       width,
       height,
       reset,
@@ -219,6 +220,7 @@ Slider.propTypes = {
   dragChange: PropTypes.func,
   onChange: PropTypes.func,
   handleLabelFormat: PropTypes.string,
+  formatLabelFunction: PropTypes.func,
   sliderStyle: PropTypes.object,
   showLabels: PropTypes.bool,
   labelStyle: PropTypes.object
