@@ -131,7 +131,8 @@ class Slider extends Component {
     } = this.props;
     const selectionWidth = Math.abs(scale(selection[1]) - scale(selection[0]));
     const selectionSorted = Array.from(selection).sort((a, b) => +a - +b);
-    const f = d3Format(handleLabelFormat);
+    const defaultLabelFormatFunction = d3Format(handleLabelFormat);
+    const f = formatLabelFunction || defaultLabelFormatFunction;
     return (
       <svg
         style={sliderStyle}
