@@ -121,6 +121,7 @@ Histoslider.propTypes = {
   showOnDrag: PropTypes.bool,
   style: PropTypes.object,
   handleLabelFormat: PropTypes.string,
+  formatLabelFunction: PropTypes.func,
   disableHistogram: PropTypes.bool
 };
 
@@ -134,7 +135,8 @@ Histoslider.defaultProps = {
   barPadding: 3,
   padding: 20,
   sliderHeight: 25,
-  handleLabelFormat: "0.3P"
+  handleLabelFormat: "0.3P",
+  formatLabelFunction: undefined
 };
 
 export default Histoslider;
