@@ -33,6 +33,29 @@ const buckets = [
   }
 ];
 
+const dateTimeData = [
+  {
+    x0: new Date('2020-01-01').valueOf(),
+    x: new Date('2020-01-30').valueOf(),
+    y: 8
+  },
+  {
+    x0: new Date('2020-02-01').valueOf(),
+    x: new Date('2020-02-28').valueOf(),
+    y: 2
+  },
+  {
+    x0: new Date('2020-03-01').valueOf(),
+    x: new Date('2020-03-30').valueOf(),
+    y: 0
+  },
+  {
+    x0: new Date('2020-04-01').valueOf(),
+    x: new Date('2020-04-30').valueOf(),
+    y: 2
+  }
+];
+
 // Stateful container for testing interaction
 class HistosliderContainer extends Component {
   state = {
@@ -71,7 +94,17 @@ storiesOf("Histoslider", module)
       width={800}
     />
   )
-  .add("No labels", () => 
+  .add("No labels", () =>
     <HistosliderContainer
       showLabels={false}/>
-  );
+  ).add("Date time data", () =>
+    <HistosliderContainer
+        data={dateTimeData}
+        formatLabelFunction={(value) => {
+          const date = new Date(value);
+          const dtf = new Intl.DateTimeFormat('en', {year: 'numeric', month: 'short', day: '2-digit'});
+          const [{value: mo}, , {value: da}, , {value: ye}] = dtf.formatToParts(date);
+          return `${da}-${mo}-${ye}`;
+        }}
+    />
+  )

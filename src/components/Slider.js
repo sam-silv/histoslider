@@ -119,6 +119,7 @@ class Slider extends Component {
       scale,
       format,
       handleLabelFormat,
+      formatLabelFunction,
       width,
       height,
       reset,
@@ -130,7 +131,8 @@ class Slider extends Component {
     } = this.props;
     const selectionWidth = Math.abs(scale(selection[1]) - scale(selection[0]));
     const selectionSorted = Array.from(selection).sort((a, b) => +a - +b);
-    const f = d3Format(handleLabelFormat);
+    const defaultLabelFormatFunction = d3Format(handleLabelFormat);
+    const f = formatLabelFunction || defaultLabelFormatFunction;
     return (
       <svg
         style={sliderStyle}
@@ -219,6 +221,7 @@ Slider.propTypes = {
   dragChange: PropTypes.func,
   onChange: PropTypes.func,
   handleLabelFormat: PropTypes.string,
+  formatLabelFunction: PropTypes.func,
   sliderStyle: PropTypes.object,
   showLabels: PropTypes.bool,
   labelStyle: PropTypes.object
