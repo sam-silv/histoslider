@@ -23,22 +23,6 @@ export const mapToKeyCode = (code) => {
 };
 
 class Slider extends Component {
-  componentWillMount() {}
-  componentDidMount() {
-    window.addEventListener("mouseup", this.dragEnd, false);
-    window.addEventListener("touchend", this.dragEnd, false);
-    if (this.refs.circle) {
-      this.setState({
-        defaultOffset: this.refs.circle.getBoundingClientRect().left,
-      });
-    }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("mouseup", this.dragEnd, false);
-    window.removeEventListener("touchend", this.dragEnd, false);
-  }
-
   constructor() {
     super();
     this.state = {
@@ -46,6 +30,31 @@ class Slider extends Component {
       defaultOffset: 0,
     };
   }
+
+  componentDidMount() {
+    window.addEventListener("mouseup", this.dragEnd, false);
+    window.addEventListener("touchend", this.dragEnd, false);
+    window.addEventListener("resize", this.handleResize, false);
+    if (this.refs.slider) {
+      this.setState({
+        defaultOffset: this.refs.slider.getBoundingClientRect().left,
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("mouseup", this.dragEnd, false);
+    window.removeEventListener("touchend", this.dragEnd, false);
+    window.addEventListener("resize", this.handleResize, false);
+  }
+
+  handleResize = () => {
+    if (this.refs.slider) {
+      this.setState({
+        defaultOffset: this.refs.slider.getBoundingClientRect().left,
+      });
+    }
+  };
 
   dragStart = (index, e) => {
     e.stopPropagation();
@@ -77,6 +86,7 @@ class Slider extends Component {
 
   getOffsetXFromEvent = (e, isTouch) => {
     const { defaultOffset } = this.state;
+    console.log(defaultOffset);
     if (!isTouch) return e.nativeEvent.offsetX;
     const offsetX = e.targetTouches[0].pageX - defaultOffset;
     Math.round(offsetX);
@@ -159,6 +169,7 @@ class Slider extends Component {
         onDoubleClick={reset}
         onMouseMove={(e) => this.mouseMove(e)}
         onTouchMove={(e) => this.mouseMove(e, true)}
+        ref="slider"
       >
         <rect height={4} fill={unselectedColor} x={0} y={10} width={width} />
         <rect
@@ -184,7 +195,6 @@ class Slider extends Component {
                 cy={12.5}
                 fill="#ddd"
                 strokeWidth="1"
-                ref={i === 0 ? "circle" : null}
               />
               <circle
                 style={handleStyle}
