@@ -23,9 +23,15 @@ export const mapToKeyCode = (code) => {
 };
 
 class Slider extends Component {
+  componentWillMount() {}
   componentDidMount() {
     window.addEventListener("mouseup", this.dragEnd, false);
     window.addEventListener("touchend", this.dragEnd, false);
+    if (this.refs.circle) {
+      this.setState({
+        defaultOffset: this.refs.circle.getBoundingClientRect().left,
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -37,6 +43,7 @@ class Slider extends Component {
     super();
     this.state = {
       dragging: false,
+      defaultOffset: 0,
     };
   }
 
@@ -69,12 +76,10 @@ class Slider extends Component {
   };
 
   getOffsetXFromEvent = (e, isTouch) => {
+    const { defaultOffset } = this.state;
     if (!isTouch) return e.nativeEvent.offsetX;
-    const rect = e.target.getBoundingClientRect();
-    const bodyRect = document.body.getBoundingClientRect();
-    const offsetX = e.targetTouches[0].pageX - (rect.left - bodyRect.left);
-    // offsetX = Math.round(offsetX);
-    console.log(e.targetTouches[0].pageX, rect.left, bodyRect.left);
+    const offsetX = e.targetTouches[0].pageX - defaultOffset;
+    Math.round(offsetX);
     return offsetX;
   };
 
@@ -179,6 +184,7 @@ class Slider extends Component {
                 cy={12.5}
                 fill="#ddd"
                 strokeWidth="1"
+                ref={i === 0 ? "circle" : null}
               />
               <circle
                 style={handleStyle}
