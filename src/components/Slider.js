@@ -86,7 +86,6 @@ class Slider extends Component {
 
   getOffsetXFromEvent = (e, isTouch) => {
     const { defaultOffset } = this.state;
-    console.log(defaultOffset);
     if (!isTouch) return e.nativeEvent.offsetX;
     const offsetX = e.targetTouches[0].pageX - defaultOffset;
     Math.round(offsetX);
