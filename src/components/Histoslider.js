@@ -5,30 +5,32 @@ import { scaleLinear as linear } from "d3-scale";
 
 import Histogram from "./Histogram";
 import Slider from "./Slider";
-
-const SLIDER_HEIGHT = 30;
+import debounce from "../utils/debouce";
 
 class Histoslider extends Component {
   constructor() {
     super();
     this.state = {
-      dragging: false
+      dragging: false,
     };
   }
 
-  dragChange = dragging => {
-    // TODO - debounce
-    this.setState({ dragging });
+  dragChange = (dragging) => {
+    debounce(() => {
+      this.setState({ dragging });
+    }, 200);
   };
 
-  onChange = selection => {
+  onChange = (selection) => {
     const { data, onChange } = this.props;
     const sortedData = data.sort((a, b) => +a.x0 - +b.x0);
     const extent = [
       min(sortedData, ({ x0 }) => +x0),
-      max(sortedData, ({ x }) => +x)
+      max(sortedData, ({ x }) => +x),
     ];
-    onChange(selection.map(d => Math.max(extent[0], Math.min(extent[1], +d))));
+    onChange(
+      selection.map((d) => Math.max(extent[0], Math.min(extent[1], +d)))
+    );
   };
 
   reset = () => {
@@ -43,7 +45,7 @@ class Histoslider extends Component {
       height,
       padding,
       sliderHeight,
-      disableHistogram
+      disableHistogram,
     } = this.props;
 
     const innerHeight = height - padding * 2;
@@ -53,7 +55,7 @@ class Histoslider extends Component {
     const sortedData = data.sort((a, b) => +a.x0 - +b.x0);
     const extent = [
       min(sortedData, ({ x0 }) => +x0),
-      max(sortedData, ({ x }) => +x)
+      max(sortedData, ({ x }) => +x),
     ];
     const maxValue = max(sortedData, ({ y }) => +y);
     const scale = linear().domain(extent).range([0, innerWidth]);
@@ -70,7 +72,7 @@ class Histoslider extends Component {
       onChange: this.onChange,
       reset: this.reset,
       width: innerWidth,
-      dragging: this.state.dragging
+      dragging: this.state.dragging,
     };
 
     return (
@@ -79,19 +81,20 @@ class Histoslider extends Component {
           width,
           padding,
           boxSizing: "border-box",
-          position: "relative"
+          position: "relative",
         })}
         className="Histoslider Histoslider--wrapper"
       >
-        {!disableHistogram &&
+        {!disableHistogram && (
           <Histogram
             {...Object.assign({}, this.props, overrides, {
-              height: histogramHeight
+              height: histogramHeight,
             })}
-          />}
+          />
+        )}
         <Slider
           {...Object.assign({}, this.props, overrides, {
-            height: sliderHeight
+            height: sliderHeight,
           })}
         />
       </div>
@@ -104,7 +107,7 @@ Histoslider.propTypes = {
     PropTypes.shape({
       x0: PropTypes.number,
       x: PropTypes.number,
-      y: PropTypes.number
+      y: PropTypes.number,
     })
   ).isRequired,
   onChange: PropTypes.func.isRequired,
@@ -122,7 +125,7 @@ Histoslider.propTypes = {
   style: PropTypes.object,
   handleLabelFormat: PropTypes.string,
   formatLabelFunction: PropTypes.func,
-  disableHistogram: PropTypes.bool
+  disableHistogram: PropTypes.bool,
 };
 
 Histoslider.defaultProps = {
@@ -136,7 +139,7 @@ Histoslider.defaultProps = {
   padding: 20,
   sliderHeight: 25,
   handleLabelFormat: "0.3P",
-  formatLabelFunction: undefined
+  formatLabelFunction: undefined,
 };
 
 export default Histoslider;

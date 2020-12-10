@@ -86,8 +86,9 @@ class Slider extends Component {
 
   getOffsetXFromEvent = (e, isTouch) => {
     const { defaultOffset } = this.state;
-    if (!isTouch) return e.nativeEvent.offsetX;
-    const offsetX = e.targetTouches[0].pageX - defaultOffset;
+    let offsetX = 0;
+    if (!isTouch) return e.nativeEvent.pageX - defaultOffset;
+    else offsetX = e.targetTouches[0].pageX - defaultOffset;
     Math.round(offsetX);
     return offsetX;
   };
@@ -163,10 +164,10 @@ class Slider extends Component {
         style={sliderStyle}
         height={height}
         width={width}
-        onMouseDown={(e) => this.dragFromSVG(e)}
+        onMouseDown={(e) => this.dragFromSVG(e, false)}
         onTouchStart={(e) => this.dragFromSVG(e, true)}
         onDoubleClick={reset}
-        onMouseMove={(e) => this.mouseMove(e)}
+        onMouseMove={(e) => this.mouseMove(e, false)}
         onTouchMove={(e) => this.mouseMove(e, true)}
         ref="slider"
       >
