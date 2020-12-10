@@ -187,6 +187,7 @@ class Slider extends Component {
               style={{ outline: "none" }}
             >
               <circle
+                className="circle-external"
                 style={handleStyle}
                 r={10}
                 cx={0}
@@ -195,6 +196,7 @@ class Slider extends Component {
                 strokeWidth="1"
               />
               <circle
+                className="circle-internal"
                 style={handleStyle}
                 r={9}
                 cx={0}
@@ -204,6 +206,7 @@ class Slider extends Component {
                 strokeWidth="1"
               />
               <circle
+                className="circle-transparent"
                 style={handleStyle}
                 onMouseDown={this.dragStart.bind(this, i)}
                 onTouchStart={this.dragStart.bind(this, i)}
