@@ -58,17 +58,16 @@ class Slider extends Component {
 
   dragStart = (index, e) => {
     e.stopPropagation();
-    if (!this.state.dragging) {
-      this.setState(
-        {
-          dragging: true,
-          dragIndex: index,
-        },
-        () => {
-          this.props.dragChange(true);
-        }
-      );
-    }
+    if (this.state.dragging) return;
+    this.setState(
+      {
+        dragging: true,
+        dragIndex: index,
+      },
+      () => {
+        this.props.dragChange(true);
+      }
+    );
   };
 
   dragEnd = (e) => {
@@ -166,7 +165,6 @@ class Slider extends Component {
         width={width}
         onMouseDown={(e) => this.dragFromSVG(e, false)}
         onTouchStart={(e) => this.dragFromSVG(e, true)}
-        onDoubleClick={reset}
         onMouseMove={(e) => this.mouseMove(e, false)}
         onTouchMove={(e) => this.mouseMove(e, true)}
         ref="slider"
@@ -198,13 +196,21 @@ class Slider extends Component {
               />
               <circle
                 style={handleStyle}
-                onMouseDown={this.dragStart.bind(this, i)}
-                onTouchStart={this.dragStart.bind(this, i)}
                 r={9}
                 cx={0}
                 cy={12}
                 fill="white"
                 stroke="#ccc"
+                strokeWidth="1"
+              />
+              <circle
+                style={handleStyle}
+                onMouseDown={this.dragStart.bind(this, i)}
+                onTouchStart={this.dragStart.bind(this, i)}
+                r={30}
+                cx={0}
+                cy={12.5}
+                fill="transparent"
                 strokeWidth="1"
               />
               {showLabels ? (
