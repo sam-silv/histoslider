@@ -164,7 +164,6 @@ class Slider extends Component {
         height={height}
         width={width}
         onMouseDown={(e) => this.dragFromSVG(e, false)}
-        onTouchStart={(e) => this.dragFromSVG(e, true)}
         onMouseMove={(e) => this.mouseMove(e, false)}
         onTouchMove={(e) => this.mouseMove(e, true)}
         ref="slider"
