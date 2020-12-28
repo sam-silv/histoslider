@@ -1,8 +1,8 @@
 {
   "name": "histoslider",
-  "version": "2.0.16",
+  "version": "1.0.3",
   "main": "./lib/index.js",
-  "author": "Sam Hogg <sam@samhogg.com> (http://samhogg.com/)",
+  "author": "Riccardo Canella <riccardo.canella@lastminute.com> (https://canellariccardo.it)",
   "description": "D3 based histogram slider component for React",
   "devDependencies": {
     "@storybook/addon-actions": "3.1.2",
@@ -18,7 +18,8 @@
     "react": "^15.6.0",
     "react-dom": "^15.6.0",
     "react-scripts": "^1.0.7",
-    "react-test-renderer": "^15.5.4"
+    "react-test-renderer": "^15.5.4",
+    "standard-version": "^9.0.0"
   },
   "peerDependencies": {
     "d3-array": "^1.2.0",
@@ -32,7 +33,8 @@
     "start": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public -o docs",
     "build": "babel src --out-dir lib",
-    "prepare": "npm run build-storybook && npm run build"
+    "prepare": "npm run build-storybook && npm run build",
+    "release": "standard-version"
   },
   "dependencies": {
     "prop-types": "^15.5.10",
