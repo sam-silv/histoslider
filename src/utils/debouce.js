@@ -1,6 +1,6 @@
 export default (func, wait, immediate) => {
   let timeout;
-  return () => {
+  return function () {
     const context = this,
       args = arguments;
     const later = () => {
