@@ -1,6 +1,6 @@
 {
   "name": "histoslider",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "./lib/index.js",
   "author": "Riccardo Canella <riccardo.canella@lastminute.com> (https://canellariccardo.it)",
   "description": "D3 based histogram slider component for React",

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/thecreazy/histoslider/compare/v1.0.3...v1.0.4) (2020-12-29)
+
+
+### Bug Fixes
+
+* **debouce:** fix debouce arrow function ([3820b61](https://github.com/thecreazy/histoslider/commit/3820b61a4a85c2d5b8c68f4b146c2f9e2360ac21))
+
 ### [1.0.3](https://github.com/thecreazy/histoslider/compare/v2.0.15...v1.0.3) (2020-12-28)
 
 
