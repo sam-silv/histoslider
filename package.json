@@ -20,6 +20,10 @@
     "react-scripts": "^1.0.7",
     "react-test-renderer": "^15.5.4"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samhogg/histoslider.git"
+  },
   "peerDependencies": {
     "d3-array": "^1.2.0",
     "d3-format": "^1.2.0",
